@@ -16,7 +16,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 2. F12 (개발자 도구) 열기
 3. 상단 **Application(어플리케이션)** 탭 클릭
 4. 왼쪽 **Cookies** → `https://www.hoyolab.com` 클릭
-5. 이름(Name) 목록에서 `ltuid_v2`, `ltoken_v2` 값을 각각 복사
+5. 이름(Name) 목록에서 **`ltuid_v2`**, **`ltoken_v2`** 값을 각각 복사
 
 
 ## 3. GitHub Secret 등록하기
@@ -47,20 +47,20 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 ]
 ```
 
-- **`LTUID`, `LTOKEN`, `GAMES` : 필수 입력**
-- `GAMES`에 넣을 수 있는 값 : `"원신"`, `"붕괴: 스타레일"`, `"붕괴 3rd"`, `"젠레스 존 제로"`
-- (자동 출석을 원하는 게임만 입력하여 사용하시면 됩니다.)
+- **`LTUID`**, **`LTOKEN`**, **`GAMES`** : **필수 입력**
+- **`GAMES`**에 출석을 원하는 게임만 입력하여 사용하면 됩니다. **[`"원신"`, `"붕괴: 스타레일"`, `"붕괴 3rd"`, `"젠레스 존 제로"`]**
 - `DISCORD_WEBHOOK`을 비워두고, `USE_LAST_AVATAR_WEBHOOK`이 `"o"`이면 리스트 마지막에
   `AVATAR`가 채워진 계정의 웹훅을 대신 사용합니다.
 - 비어있는 `DISCORD_WEBHOOK`은 가장 마지막에 입력된 `웹훅 URL`로 자동 설정 됩니다.
 
+
 ## 4. 실행 확인
 
 - 기본 설정은 `매일 한국시간 오전 2시[UTC 17:00(전날)]`에 자동 실행됩니다.
-  시간을 바꾸려면 `.github/workflows/checkin.yml`의 `cron` 값을 수정하세요.
-- 바로 테스트하고 싶다면 레포의 **Actions** 탭 → **HoYoLab 자동 출석** →
-  **Run workflow** 버튼으로 수동 실행할 수 있습니다.
+- 시간을 바꾸려면 `.github/workflows/checkin.yml`의 `cron` 값을 수정하세요.
+- 바로 테스트하고 싶다면 레포의 **Actions** 탭 → **HoYoLab 자동 출석** → **Run workflow** 버튼으로 수동 실행할 수 있습니다.
 - 실행 로그는 Actions 탭의 각 실행 기록에서 확인 가능합니다.
+
 
 ## 주의사항
 
