@@ -80,7 +80,7 @@ GitHub Actions에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
 
 ## 4. 실행 확인
 
-- **바로 테스트 : 저장소의 `Actions` 탭 → `HoYoLab 자동 출석` → `Run workflow` 클릭**
+- **테스트 : 저장소의 `Actions` 탭 → `HoYoLab 자동 출석` → `Run workflow` 클릭**
 - 실행 로그는 `Actions` 탭의 각 실행 기록에서 확인 가능.
 - 기본 설정은 **`매일 한국시간(KST) 오전 2시`** `UTC 17:00(전날)`에 자동 실행.
   - **시간 설정** : `.github/workflows/checkin.yml` 파일의 `cron` 값을 수정.
