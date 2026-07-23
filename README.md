@@ -29,7 +29,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 [
   {
     "NAME": "본계정",
-    "AVATAR": "",
+    "AVATAR": "디스코드 웹훅 프로필 이미지 접속 링크",
     "LTUID": "여기에 ltuid_v2 값",
     "LTOKEN": "여기에 ltoken_v2 값",
     "GAMES": ["붕괴 3rd", "원신", "붕괴: 스타레일", "젠레스 존 제로"],
@@ -37,11 +37,11 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
   },
   {
     "NAME": "부계1",
-    "AVATAR": "",
+    "AVATAR": "디스코드 웹훅 프로필 이미지 접속 링크",
     "LTUID": "여기에 ltuid_v2 값",
     "LTOKEN": "여기에 ltoken_v2 값",
     "GAMES": ["붕괴: 스타레일", "붕괴 3rd", "원신"],
-    "DISCORD_WEBHOOK": ""
+    "DISCORD_WEBHOOK": "여기에 디스코드 웹훅 URL"
   }
 ]
 ```
