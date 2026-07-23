@@ -61,7 +61,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ---
 ## 3. GitHub Secret 등록하기
 
-1. 복사된 본인 저장소에서 → **`⚙️Settings`** 탭  → **`Secrets and variables`** → **`Actions`**
+1. 복사된 본인 저장소에서 → **`⚙️Settings`** 탭  → **`*️⃣Secrets and variables`** → **`Actions`**
 2. **`New repository secret`** (초록색) 클릭
 3. Name : **`ACCOUNTS_JSON`**
 4. `Secret` 값에는 아래 형식대로 계정 정보를 작성해서 붙여 넣은 후 등록 :
@@ -97,7 +97,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ---
 ## 4. 실행 확인
 
-- **테스트 : 저장소의 `Actions` 탭 → `HoYoLab 자동 출석` → `Run workflow ▼` → `Run workflow` 클릭**
+- **테스트 : 저장소의 `▶️Actions` 탭 → `HoYoLab 자동 출석` → `Run workflow ▼` → `Run workflow` 클릭**
 - 실행 로그는 `Actions` 탭의 각 실행 기록에서 확인 가능.
 - **기본 설정**은 **`매일 한국시간(KST) 오전 2시`** `(UTC 17:00(-1일))`에 자동 실행.
   - **시간 설정** : **`.github/workflows/checkin.yml`** 파일의 `cron` 값을 수정.
