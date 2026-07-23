@@ -1,0 +1,28 @@
+name: HoYoLab 자동 출석
+
+on:
+  schedule:
+    # 매일 한국시간(KST) 오전 2시 = UTC 17:00(전날)
+    - cron: "0 17 * * *"
+  workflow_dispatch: {} # Actions 탭에서 수동 실행 버튼도 사용 가능
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 레포 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 의존성 설치
+        run: npm install
+
+      - name: 출석 체크 실행
+        env:
+          ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
+          USE_LAST_AVATAR_WEBHOOK: "o"
+        run: node index.js
