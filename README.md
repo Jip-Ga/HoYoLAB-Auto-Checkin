@@ -28,7 +28,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 ```json
 [
   {
-    "NAME": "본계정",
+    "NAME": "디스코드 웹훅 이름",
     "AVATAR": "디스코드 웹훅 프로필 이미지 URL",
     "LTUID": "여기에 ltuid_v2 값",
     "LTOKEN": "여기에 ltoken_v2 값",
@@ -36,7 +36,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
     "DISCORD_WEBHOOK": "디스코드 웹훅 URL"
   },
   {
-    "NAME": "부계1",
+    "NAME": "디스코드 웹훅 이름",
     "AVATAR": "디스코드 웹훅 프로필 이미지 URL",
     "LTUID": "여기에 ltuid_v2 값",
     "LTOKEN": "여기에 ltoken_v2 값",
@@ -46,13 +46,14 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 ]
 ```
 
+- `NAME`, `AVATAR`, `DISCORD_WEBHOOK` : 빈칸 입력 가능.
 - `GAMES`에 넣을 수 있는 값: `"원신"`, `"붕괴: 스타레일"`, `"붕괴 3rd"`, `"젠레스 존 제로"`
 - `DISCORD_WEBHOOK`을 비워두고, `USE_LAST_AVATAR_WEBHOOK`이 `"o"`이면 리스트 마지막에
-  `AVATAR`가 채워진 계정의 웹훅을 대신 사용합니다 (원본 코드와 동일한 동작).
+  `AVATAR`가 채워진 계정의 웹훅을 대신 사용합니다.
 
 ## 4. 실행 확인
 
-- 기본 설정은 매일 UTC 00:00(한국시간 오전 9시)에 자동 실행됩니다.
+- 기본 설정은 매일 UTC 00:00(한국시간 오전 2시)에 자동 실행됩니다.
   시간을 바꾸려면 `.github/workflows/checkin.yml`의 `cron` 값을 수정하세요.
 - 바로 테스트하고 싶다면 레포의 **Actions** 탭 → **HoYoLab 자동 출석** →
   **Run workflow** 버튼으로 수동 실행할 수 있습니다.
