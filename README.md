@@ -1,14 +1,14 @@
 # HoYoLab 자동 출석 (GitHub Actions)
 
-GitHub Actions에서 매일 자동으로
-돌아가도록 바꾼 버전입니다. 계정 정보(쿠키)는 코드에 넣지 않고 **GitHub Secrets**에
-저장해서 사용합니다.
+GitHub Actions에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
+
 
 ## 1. 레포 만들기 / 파일 올리기
 
 이 폴더(`index.js`, `package.json`, `.github/workflows/checkin.yml`)를 그대로
 GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 public 레포여도
 쿠키가 노출되지 않습니다. 그래도 걱정되면 private으로 만드셔도 됩니다.
+
 
 ## 2. 쿠키 값 얻기
 
@@ -17,6 +17,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 3. 상단 **Application(어플리케이션)** 탭 클릭
 4. 왼쪽 **Cookies** → `https://www.hoyolab.com` 클릭
 5. 이름(Name) 목록에서 `ltuid_v2`, `ltoken_v2` 값을 각각 복사
+
 
 ## 3. GitHub Secret 등록하기
 
@@ -27,7 +28,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 
 ```json
 [
-  {
+  { //계정 1
     "NAME" : "디스코드ㅤ웹훅ㅤ이름",
     "AVATAR" : "디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL",
     "LTUID" : "여기에ㅤltuid_v2ㅤ값",
@@ -35,7 +36,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
     "GAMES" : ["원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로"],
     "DISCORD_WEBHOOK" : "디스코드ㅤ웹훅ㅤURL"
   },
-  {
+  { //계정 2
     "NAME" : "디스코드ㅤ웹훅ㅤ이름",
     "AVATAR" : "디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL",
     "LTUID" : "여기에ㅤltuid_v2ㅤ값",
@@ -48,7 +49,8 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 
 - `NAME`, `AVATAR`, `DISCORD_WEBHOOK` : 빈칸 입력 가능.
 - `GAMES`에 넣을 수 있는 값 : `"원신"`, `"붕괴: 스타레일"`, `"붕괴 3rd"`, `"젠레스 존 제로"`
-  \n자동 출석을 원하는 게임만 입력하여 사용하시면 됩니다.
+- 자동 출석을 원하는 게임만 입력하여 사용하시면 됩니다.
+- 
 - `DISCORD_WEBHOOK`을 비워두고, `USE_LAST_AVATAR_WEBHOOK`이 `"o"`이면 리스트 마지막에
   `AVATAR`가 채워진 계정의 웹훅을 대신 사용합니다.
 - 비어있는 `DISCORD_WEBHOOK`은 가장 마지막에 입력된 `웹훅 URL`로 자동 설정 됩니다.
