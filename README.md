@@ -1,6 +1,6 @@
 # HoYoLab 자동 출석 (GitHub Actions)
 
-Pipedream 전용 코드(`defineComponent`)를 걷어내고, GitHub Actions에서 매일 자동으로
+GitHub Actions에서 매일 자동으로
 돌아가도록 바꾼 버전입니다. 계정 정보(쿠키)는 코드에 넣지 않고 **GitHub Secrets**에
 저장해서 사용합니다.
 
