@@ -47,9 +47,9 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 ]
 ```
 
-- `NAME`, `AVATAR`, `DISCORD_WEBHOOK` : 빈칸 입력 가능.
+- **`LTUID`, `LTOKEN`, `GAMES` : 필수 입력**
 - `GAMES`에 넣을 수 있는 값 : `"원신"`, `"붕괴: 스타레일"`, `"붕괴 3rd"`, `"젠레스 존 제로"`
-자동 출석을 원하는 게임만 입력하여 사용하시면 됩니다.
+- (자동 출석을 원하는 게임만 입력하여 사용하시면 됩니다.)
 - `DISCORD_WEBHOOK`을 비워두고, `USE_LAST_AVATAR_WEBHOOK`이 `"o"`이면 리스트 마지막에
   `AVATAR`가 채워진 계정의 웹훅을 대신 사용합니다.
 - 비어있는 `DISCORD_WEBHOOK`은 가장 마지막에 입력된 `웹훅 URL`로 자동 설정 됩니다.
