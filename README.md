@@ -28,26 +28,27 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 ```json
 [
   {
-    "NAME": "디스코드ㅤ웹훅ㅤ이름",
-    "AVATAR": "디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL",
-    "LTUID": "여기에ㅤltuid_v2ㅤ값",
-    "LTOKEN": "여기에ㅤltoken_v2ㅤ값",
-    "GAMES": ["원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로"],
-    "DISCORD_WEBHOOK": "디스코드ㅤ웹훅ㅤURL"
+    "NAME" : "디스코드ㅤ웹훅ㅤ이름",
+    "AVATAR" : "디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL",
+    "LTUID" : "여기에ㅤltuid_v2ㅤ값",
+    "LTOKEN" : "여기에ㅤltoken_v2ㅤ값",
+    "GAMES" : ["원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로"],
+    "DISCORD_WEBHOOK" : "디스코드ㅤ웹훅ㅤURL"
   },
   {
-    "NAME": "디스코드ㅤ웹훅ㅤ이름",
-    "AVATAR": "디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL",
-    "LTUID": "여기에ㅤltuid_v2ㅤ값",
-    "LTOKEN": "여기에ㅤltoken_v2ㅤ값",
-    "GAMES": ["붕괴: 스타레일", "붕괴 3rd", "원신"],
-    "DISCORD_WEBHOOK": "디스코드ㅤ웹훅ㅤURL"
+    "NAME" : "디스코드ㅤ웹훅ㅤ이름",
+    "AVATAR" : "디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL",
+    "LTUID" : "여기에ㅤltuid_v2ㅤ값",
+    "LTOKEN" : "여기에ㅤltoken_v2ㅤ값",
+    "GAMES" : ["붕괴: 스타레일", "붕괴 3rd", "원신"],
+    "DISCORD_WEBHOOK" : "디스코드ㅤ웹훅ㅤURL"
   }
 ]
 ```
 
 - `NAME`, `AVATAR`, `DISCORD_WEBHOOK` : 빈칸 입력 가능.
 - `GAMES`에 넣을 수 있는 값 : `"원신"`, `"붕괴: 스타레일"`, `"붕괴 3rd"`, `"젠레스 존 제로"`
+  자동 출석을 원하는 게임만 입력하여 사용하시면 됩니다.
 - `DISCORD_WEBHOOK`을 비워두고, `USE_LAST_AVATAR_WEBHOOK`이 `"o"`이면 리스트 마지막에
   `AVATAR`가 채워진 계정의 웹훅을 대신 사용합니다.
 - 비어있는 `DISCORD_WEBHOOK`은 가장 마지막에 입력된 `웹훅 URL`로 자동 설정 됩니다.
