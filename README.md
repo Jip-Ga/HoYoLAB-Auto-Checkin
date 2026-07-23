@@ -1,6 +1,7 @@
 # HoYoLab 자동 출석 (GitHub Actions)
 
 GitHub Actions에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
+
 계정 여러개 등록해서 사용 가능합니다.
 
 
