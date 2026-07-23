@@ -3,6 +3,15 @@
 GitHub Actions에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
 
 
+## **※주의사항※**
+
+- GitHub Actions의 무료 스케줄 실행은 저장소가 일정 기간 비활성 상태면 자동으로
+  꺼질 수 있습니다(공개 레포 기준 60일 미사용 시 스케줄 중지). 가끔 커밋하거나
+  수동 실행을 해주면 유지됩니다.
+- **`ltuid_v2`, `ltoken_v2` 등 해당 값들은 유출되면 게임 계정이 위험해질 수 있으니 `GitHub Secret` 외의 곳에는
+  절대 붙여넣지 마세요.**
+
+
 ## 1. 레포 만들기 / 파일 올리기
 
 이 폴더(`index.js`, `package.json`, `.github/workflows/checkin.yml`)를 그대로
@@ -27,7 +36,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 1. 레포 페이지 → **Settings** → **Secrets and variables** → **Actions**
 2. **New repository secret** 클릭
 3. Name: `ACCOUNTS_JSON`
-4. Secret 값에는 아래 형식대로 계정 정보를 JSON으로 작성해서 붙여넣기:
+4. `Secret` 값에는 아래 형식대로 계정 정보를 JSON으로 작성해서 붙여넣기:
 
 ```json
 [
@@ -59,16 +68,8 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
 
 ## 4. 실행 확인
 
-- 기본 설정은 `매일 한국시간 오전 2시[UTC 17:00(전날)]`에 자동 실행됩니다.
-- 시간을 바꾸려면 `.github/workflows/checkin.yml`의 `cron` 값을 수정하세요.
+- 기본 설정은 `**매일 한국시간 오전 2시** [UTC 17:00(전날)]`에 자동 실행됩니다.
+- 시간을 바꾸려면 `.github/workflows/checkin.yml` 파일의 `cron` 값을 수정하세요.
 - 바로 테스트하고 싶다면 레포의 **Actions** 탭 → **HoYoLab 자동 출석** → **Run workflow** 버튼으로 수동 실행할 수 있습니다.
 - 실행 로그는 Actions 탭의 각 실행 기록에서 확인 가능합니다.
 
-
-## **※주의사항※**
-
-- GitHub Actions의 무료 스케줄 실행은 저장소가 일정 기간 비활성 상태면 자동으로
-  꺼질 수 있습니다(공개 레포 기준 60일 미사용 시 스케줄 중지). 가끔 커밋하거나
-  수동 실행을 해주면 유지됩니다.
-- **`ltuid_v2`, `ltoken_v2` 등 해당 값들은 유출되면 게임 계정이 위험해질 수 있으니 Secrets 외의 곳에는
-  절대 붙여넣지 마세요.**
