@@ -32,7 +32,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
     "AVATAR": "",
     "LTUID": "여기에 ltuid_v2 값",
     "LTOKEN": "여기에 ltoken_v2 값",
-    "GAMES": ["원신", "붕괴: 스타레일", "젠레스 존 제로"],
+    "GAMES": ["붕괴 3rd", "원신", "붕괴: 스타레일", "젠레스 존 제로"],
     "DISCORD_WEBHOOK": "여기에 디스코드 웹훅 URL"
   },
   {
@@ -40,7 +40,7 @@ GitHub 레포에 올려주세요. 계정 정보가 코드에 없기 때문에 pu
     "AVATAR": "",
     "LTUID": "여기에 ltuid_v2 값",
     "LTOKEN": "여기에 ltoken_v2 값",
-    "GAMES": ["붕괴: 스타레일"],
+    "GAMES": ["붕괴: 스타레일", "붕괴 3rd", "원신"],
     "DISCORD_WEBHOOK": ""
   }
 ]
