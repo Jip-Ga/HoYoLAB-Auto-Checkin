@@ -1,39 +1,5 @@
 import fetch from "node-fetch";
 
-/**
- * =========================================================================
- * [계정 설정]
- * =========================================================================
- * 계정 정보는 소스코드에 직접 적지 않고, GitHub Secrets의 ACCOUNTS_JSON 값을
- * JSON 문자열로 저장해서 불러옵니다. (레포에 쿠키가 노출되지 않도록 하기 위함)
- *
- * ACCOUNTS_JSON 예시 (그대로 복사해서 값만 채운 뒤 GitHub Secret에 등록):
- *
- * [
- *   {
- *     "NAME": "본계정",
- *     "AVATAR": "",
- *     "LTUID": "여기에 ltuid_v2 값",
- *     "LTOKEN": "여기에 ltoken_v2 값",
- *     "GAMES": ["원신", "붕괴: 스타레일", "젠레스 존 제로"],
- *     "DISCORD_WEBHOOK": "여기에 디스코드 웹훅 URL"
- *   },
- *   {
- *     "NAME": "부계1",
- *     "AVATAR": "",
- *     "LTUID": "여기에 ltuid_v2 값",
- *     "LTOKEN": "여기에 ltoken_v2 값",
- *     "GAMES": ["붕괴: 스타레일"],
- *     "DISCORD_WEBHOOK": ""
- *   }
- * ]
- *
- * 등록 방법:
- * 1. 레포 > Settings > Secrets and variables > Actions
- * 2. "New repository secret" 클릭
- * 3. Name: ACCOUNTS_JSON
- * 4. Secret: 위 형식대로 작성한 JSON을 한 줄(또는 여러 줄) 그대로 붙여넣기
- */
 
 const USE_LAST_AVATAR_WEBHOOK = process.env.USE_LAST_AVATAR_WEBHOOK ?? "o";
 
