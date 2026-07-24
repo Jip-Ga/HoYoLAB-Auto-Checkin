@@ -25,7 +25,7 @@ AI 활용해서 깃허브에서 매일 자동으로 돌아가도록 바꾼 버�
 1. 깃허브 계정
 2. 해당 페이지 우측 위 **`Fork`** 로 저장소 및 파일 복사
 
-<img width="471" height="76" alt="image" src="https://github.com/user-attachments/assets/9dd4c2d0-2ada-4475-b74e-442c8e2f6234" />
+<img width="892" height="102" alt="image" src="https://github.com/user-attachments/assets/007e814c-916b-48f8-8cb1-41b4712166f1" />
 
 3. 디스코드 개인 서버의 웹훅 또는 타 서버의 웹훅『선택사항』
 4. 메모장 어플『선택사항』
