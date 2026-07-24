@@ -2,7 +2,7 @@ name: HoYoLab 자동 출석 (2차 백업)
 
 on:
   schedule:
-    - cron: "1 17 * * *"   # 한국시간 오전 2시 1분
+    - cron: "50 1 * * *"   # 한국시간 오전 2시 1분
   workflow_dispatch: {}
 
 jobs:
