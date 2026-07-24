@@ -3,7 +3,7 @@ name: HoYoLab 자동 출석
 on:
   schedule:
     # 매일 한국시간(KST) 오전 2시 = UTC 17:00(전날)
-    - cron: "0 0 * * *"
+    - cron: "17 1 * * *"
   workflow_dispatch: {} # Actions 탭에서 수동 실행 버튼도 사용 가능
 
 jobs:
