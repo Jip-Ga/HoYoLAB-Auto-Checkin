@@ -1,5 +1,10 @@
 import fetch from "node-fetch";
 
+/**
+ * =========================================================================
+ * [계정 설정 가져오기]
+ * =========================================================================
+ */
 
 const USE_LAST_AVATAR_WEBHOOK = process.env.USE_LAST_AVATAR_WEBHOOK ?? "o";
 
@@ -118,6 +123,7 @@ async function sendDiscord(webhook, embed, avatar) {
 async function main() {
   const ACCOUNTS = loadAccounts();
   const uidStore = {};
+  let allSucceeded = true; // 모든 계정, 모든 게임이 성공(또는 이미완료)해야 true 유지
 
   for (const account of ACCOUNTS) {
     const fields = [];
@@ -147,7 +153,11 @@ async function main() {
       }
 
       const message = result ? result.message : "출석 실패 ❌";
-      if (result?.success) successCount++;
+      if (result?.success) {
+        successCount++;
+      } else {
+        allSucceeded = false; // 하나라도 실패하면 전체 실패로 기록
+      }
 
       fields.push({
         name: `[${gameName}]`,
@@ -180,6 +190,14 @@ async function main() {
     const avatarToUse = enabled && !account.AVATAR && lastAvatarAccount ? lastAvatarAccount.AVATAR : account.AVATAR;
     const webhookToUse = enabled && !account.AVATAR && lastAvatarAccount ? lastAvatarAccount.DISCORD_WEBHOOK : account.DISCORD_WEBHOOK;
     await sendDiscord(webhookToUse, embed, avatarToUse);
+  }
+
+  if (!allSucceeded) {
+    // 하나라도 출석 실패(쿠키 만료, API 오류 등)가 있으면
+    // 워크플로우 자체를 실패(exit 1) 처리해서, 다음 백업 스케줄이 다시 시도하고
+    // "오늘 성공 기록" 캐시도 저장되지 않게 함
+    console.error("일부 계정/게임 출석이 실패했습니다. 워크플로우를 실패로 표시합니다.");
+    process.exitCode = 1;
   }
 }
 
