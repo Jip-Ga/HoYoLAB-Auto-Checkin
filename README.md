@@ -82,7 +82,24 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <summary> 『필수사항』누르면 설명 나옵니다. </summary>
 
-1. 복사된 본인 저장소에서 → **`⚙️Settings`** 탭  → **`*️⃣Secrets and variables`** → **`Actions`**
+1. 복사된 본인 저장소에서 →
+    
+  <details>
+
+  <summary> ⚙️Settings 탭 → </summary>
+
+  <img width="175" height="66" alt="image" src="https://github.com/user-attachments/assets/5341a704-4c3d-4eed-b582-7a531b59b03f" />
+
+  </details>
+
+  <details>
+
+  <summary> *️⃣Secrets and variables → Actions </summary>
+
+  <img width="370" height="235" alt="image" src="https://github.com/user-attachments/assets/c9431b6c-41b9-4b27-965f-4bf006a41e3c" />
+
+  </details>
+
 2. **`New repository secret`** (초록색) 클릭
 3. Name : **`ACCOUNTS_JSON`**
 4. `Secret` 값에는 아래 형식대로 계정 정보를 작성해서 붙여 넣은 후 등록 :
