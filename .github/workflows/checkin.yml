@@ -2,9 +2,10 @@ name: HoYoLab 자동 출석
 
 on:
   schedule:
-    # 매일 한국시간(KST) 오전 2시 = UTC 17:00(전날)
-    - cron: "17 1 * * *"
-  workflow_dispatch: {} # Actions 탭에서 수동 실행 버튼도 사용 가능
+    - cron: "0 1 * * *"    # 한국시간 1
+    - cron: "10 1 * * *"   # 한국시간 2 (백업 1)
+    - cron: "20 1 * * *"   # 한국시간 3 (백업 2)
+  workflow_dispatch: {}
 
 jobs:
   checkin:
@@ -13,16 +14,34 @@ jobs:
       - name: 레포 체크아웃
         uses: actions/checkout@v4
 
+      - name: 오늘 날짜(한국시간) 구하기
+        id: date
+        run: echo "today=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
+      - name: 오늘 성공 기록 확인
+        id: cache-check
+        uses: actions/cache@v4
+        with:
+          path: .checkin-done
+          key: checkin-success-${{ steps.date.outputs.today }}
+
       - name: Node.js 설치
+        if: steps.cache-check.outputs.cache-hit != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
       - name: 의존성 설치
+        if: steps.cache-check.outputs.cache-hit != 'true'
         run: npm install
 
       - name: 출석 체크 실행
+        if: steps.cache-check.outputs.cache-hit != 'true'
         env:
           ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
           USE_LAST_AVATAR_WEBHOOK: "o"
         run: node index.js
+
+      - name: 오늘 성공 기록 저장
+        if: steps.cache-check.outputs.cache-hit != 'true'
+        run: echo "${{ steps.date.outputs.today }}" > .checkin-done
