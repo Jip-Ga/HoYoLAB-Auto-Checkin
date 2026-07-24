@@ -10,6 +10,24 @@ AI 활용해서 깃허브에서 매일 자동으로 돌아가도록 바꾼 버�
 
 계정 여러개 등록해서 사용 가능합니다.
 
+<details>
+
+<summary> 〔 디스코드 알림 결과 〕 </summary>
+
+<img width="500" height="225" alt="KakaoTalk_20260724_130135635" src="https://github.com/user-attachments/assets/d8b5e52e-0e19-424b-ab89-9209ab5bd1f6" />
+
+┗『핸드폰 알림』
+
+
+<img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/80116e53-0dab-4fcb-882c-85fd79bb4eee" />
+<img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/749ea2d7-28d2-4470-95fb-ae6fc3fc884c" />
+
+
+
+┗『HoYo 계정 2개 사용 중』
+
+</details>
+
 
 
 ---
