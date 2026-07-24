@@ -1,46 +1,65 @@
 # HoYoLab 자동 출석 (GitHub 버전)
 
-UPDATE : `2026-07-24` `PM 10:51`
+UPDATE : `2026-07-24` `AM 02:24`
 
-PC 화면에서 작업하시는걸 추천 드립니다.
+**PC 화면에서 작업하시는걸 추천 드립니다.**
 
-AI 활용해서 깃허브에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
+- AI 활용해서 깃허브에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
+- **출석 시간 설정** 방법은 **맨 아래** **`#4. 실행 확인`** 을 참고 하시면 됩니다.
+- 계정 여러개 등록해서 사용 가능합니다.
 
-**출석 시간 설정** 방법은 **맨 아래** **`4. 실행 확인`** 를 참고 하시면 됩니다.
 
-계정 여러개 등록해서 사용 가능합니다.
+
+---
+## #실행 결과
 
 <details>
 
-<summary> 〔 디스코드 알림 결과 〕 </summary>
+<summary> 〔 디스코드 핸드폰 알림 〕 </summary>
 
 <img width="500" height="225" alt="KakaoTalk_20260724_130135635" src="https://github.com/user-attachments/assets/d8b5e52e-0e19-424b-ab89-9209ab5bd1f6" />
 
-┗『핸드폰 알림』
+</details>
 
+
+<details>
+
+<summary> 〔 성공 결과 디스코드 전송 〕 </summary>
 
 <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/80116e53-0dab-4fcb-882c-85fd79bb4eee" />
 <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/749ea2d7-28d2-4470-95fb-ae6fc3fc884c" />
 
+</details>
 
 
-┗『HoYo 계정 2개 사용 중』
+<details>
+
+<summary> 〔 실패 결과 디스코드 전송 〕 </summary>
+
+- 실패 시 실패 이유(누락/조회 불가 등등)가 작성 되어 나옵니다.
+    - 아래 사진은 캐릭터 조회가 안되어 실패 처리 = 게임 계정이 없다.
+
+<img width="1000" height="313" alt="image" src="https://github.com/user-attachments/assets/97fad6f5-b96b-43c6-890b-da08d8f0877f" />
+<img width="500" height="621" alt="image" src="https://github.com/user-attachments/assets/40cdf464-147b-4a3f-8805-6ac0fd6ec767" />
 
 </details>
 
 
 
 ---
-## 🚨주의사항🚨
+## 🚨🚨#주의사항#🚨🚨
 
-- **`ltuid_v2`, `ltoken_v2` 등 해당 값들은 유출되면 게임 계정이 위험해질 수 있으니 `GitHub Secret`에만 입력.**
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+- **`ltuid_v2`, `ltoken_v2` 등 해당 값들은 타인에게 유출되면 게임 계정이 위험해질 수 있으니 **`#3. GitHub Secret`** 에만 등록하시길 경고해 드립니다.**
+    - 편의를 위해 따로 보관하시더라도 유출에 유의해서 보관하시길 바랍니다.
+
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+
 ---
-
-
-
-## 0. 준비물
+## #0. 준비물
 
 1. 깃허브 계정
+[github.com/](https://github.com/)
 2. 해당 페이지 우측 위 **`Fork`** 로 저장소 및 파일 복사
 
 <img width="457" height="70" alt="image" src="https://github.com/user-attachments/assets/7655cff5-70f1-45b2-9c2f-8e1f1c2938a4" />
@@ -50,8 +69,8 @@ AI 활용해서 깃허브에서 매일 자동으로 돌아가도록 바꾼 버�
 5. 자주 사용하지 않는 브라우저『선택사항』
 
 
-
-## 1. 디스코드 웹훅 만들기 (메모장 작성 추천)
+---
+## #1. 디스코드 웹훅 만들기 (메모장 작성 추천)
 
 <details>
 
@@ -61,15 +80,15 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 [Discord 브라우저](https://discord.com/channels/@me)
 
-1. **서버 만들기는 생략**
+1. **개인 서버 만드는 방법은 생략**
 2. 채널 생성『선택사항』
-3. 우클릭 → `채널 편집(⚙️)` → `연동` 탭 → `웹후크` → `웹후크 만들기` → `웹후크 URL 복사`
+3. 해당 채널 우클릭 → `채널 편집(⚙️)` → `연동` 탭 → `웹후크` → `웹후크 만들기` → `웹후크 URL 복사`
 
 </details>
 
 
-
-## 2. 쿠키 값 얻기 (메모장 작성 추천)
+---
+## #2. 쿠키 값 얻기 (메모장 작성 추천)
 
 - **자주 사용하지 않는 브라우저로 실행하는 것 추천.**
 
@@ -93,30 +112,14 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 </details>
 
 
-
-## 3. GitHub Secret 등록하기
+---
+## #3. GitHub Secret 등록하기
 
 <details>
 
 <summary> 『필수사항』누르면 설명 나옵니다. </summary>
 
-1. 복사된 본인 저장소에서 →
-    
-  <details>
-
-  <summary> ⚙️Settings 탭 → </summary>
-
-  <img width="175" height="66" alt="image" src="https://github.com/user-attachments/assets/5341a704-4c3d-4eed-b582-7a531b59b03f" />
-
-  </details>
-
-  <details>
-
-  <summary> *️⃣Secrets and variables → Actions </summary>
-
-  <img width="370" height="235" alt="image" src="https://github.com/user-attachments/assets/c9431b6c-41b9-4b27-965f-4bf006a41e3c" />
-
-  </details>
+1. 복사된 본인 저장소에서 → `⚙️Settings` 상단 탭 → `*️⃣Secrets and variables` (왼쪽 아래 쯤) → `Actions` 
 
 2. **`New repository secret`** (초록색) 클릭
 3. Name : **`ACCOUNTS_JSON`**
@@ -129,12 +132,12 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ```json
 [
   {
-    "LTUID" : "계정1의ㅤltuid_v2ㅤ값",
-    "LTOKEN" : "계정1의ㅤltoken_v2ㅤ값",
+    "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
+    "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
     "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
-    "DISCORD_WEBHOOK" : "계정1의ㅤ디스코드ㅤ웹훅ㅤURL",
-    "NAME" : "계정1의ㅤ디스코드ㅤ웹훅ㅤ이름",
-    "AVATAR" : "계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL"
+    "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
+    "NAME" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ이름 ",
+    "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
   }
 ]
 ```
@@ -148,20 +151,20 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ```json
 [
   {
-    "LTUID" : "계정1의ㅤltuid_v2ㅤ값",
-    "LTOKEN" : "계정1의ㅤltoken_v2ㅤ값",
+    "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
+    "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
     "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
-    "DISCORD_WEBHOOK" : "계정1의ㅤ디스코드ㅤ웹훅ㅤURL",
-    "NAME" : "계정1의ㅤ디스코드ㅤ웹훅ㅤ이름",
-    "AVATAR" : "계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL"
+    "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
+    "NAME" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ이름 ",
+    "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
   }
   ,{
-    "LTUID" : "계정2의ㅤltuid_v2ㅤ값",
-    "LTOKEN" : "계정2의ㅤltoken_v2ㅤ값",
+    "LTUID" : " 계정2의ㅤltuid_v2ㅤ값 ",
+    "LTOKEN" : " 계정2의ㅤltoken_v2ㅤ값 ",
     "GAMES" : [ "붕괴 3rd", "원신", "붕괴: 스타레일" ],
-    "DISCORD_WEBHOOK" : "계정2의ㅤ디스코드ㅤ웹훅ㅤURL",
-    "NAME" : "계정2의ㅤ디스코드ㅤ웹훅ㅤ이름",
-    "AVATAR" : "계정2의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL"
+    "DISCORD_WEBHOOK" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤURL ",
+    "NAME" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤ이름 ",
+    "AVATAR" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
   }
 ]
 ```
@@ -169,29 +172,31 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 </details>
 
 **`"LTUID"`**, **`"LTOKEN"`**, **`"GAMES"`** = **『필수 입력』**
-- **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`2. 쿠키 값 얻기`** 참고』
-- **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` 『 **`2. 쿠키 값 얻기`** 참고』
+- **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`#2. 쿠키 값 얻기`** 참고』
+- **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` 『 **`#2. 쿠키 값 얻기`** 참고』
 - **`"GAMES"`** = 출석을 원하는 게임만 입력하여 사용하면 됩니다.
-   - 현재 가능한 게임 : **`["원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로"]`**
+   - 출석 가능한 게임 : **`["원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로"]`**
 - 『선택사항』디스코드 웹훅 이름, 프로필, URL이 비어 있을 시 가장 마지막에 입력된 값으로 사용 됩니다.
    - 미사용 : **`""`**
 
 </details>
 
 
-
-## 4. 실행 확인
+---
+## #4. 실행 확인
 
 <details>
 
 <summary> 『필수사항』누르면 설명 나옵니다. </summary>
 
-- **테스트 : 복사된 본인 저장소의 `▶️Actions` 탭 → `HoYoLab 자동 출석` → `Run workflow ▼` → `Run workflow` 클릭**
+- **테스트 : 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석` → `Run workflow ▼` → `Run workflow` 클릭**
 - 실행 로그는 `Actions` 탭의 각 실행 기록에서 확인 가능.
 - **기본 설정**은 **`매일 한국시간(KST) 오전 2시`** `(UTC 17:00(-1일))`에 자동 실행.
   - **시간 설정** : `.github/workflows/` 안 쪽의 **`checkin1.yml`, `checkin2.yml`, `checkin3.yml`** 파일의 `cron` 값을 수정.
     - `KST 09:30` = `UTC 00:30` = **`cron: "30 0 * * *"`**
     - **추천 변환기 사이트** : [datetime360.com](https://datetime360.com/ko/utc-seoul-time/)
+    - 하루에 너무 자주 바꿀 시 스케줄러가 작동 안할 수도 있습니다.
+        - 이건 깃허브 서버의 고질적 문제라 다른 어플 사용해야 할 수 있습니다.
   - HoYoLab 출석 가능 시간 : `한국시간(KST) 01:00` = `중국시간(CST) 00:00`
 
 </details>
