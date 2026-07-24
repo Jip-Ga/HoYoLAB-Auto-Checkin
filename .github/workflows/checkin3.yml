@@ -1,8 +1,11 @@
-name: HoYoLab 자동 출석 (3차 백업)
+name: HoYoLab 자동 출석 (9시,11시,12시,13시)_백업
 
 on:
   schedule:
-    - cron: "32 2 * * *"   # 한국시간 오전 3시 2분
+    - cron: "13 0 * * *"   # 한국시간 09:13
+    - cron: "13 2 * * *"   # 한국시간 11:13
+    - cron: "13 3 * * *"   # 한국시간 12:13
+    - cron: "13 4 * * *"   # 한국시간 13:13
   workflow_dispatch: {}
 
 jobs:
