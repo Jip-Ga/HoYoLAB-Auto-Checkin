@@ -1,4 +1,4 @@
-name: HoYoLab 자동 출석 (주요 시간)
+name: HoYoLab 자동 출석 (9시,11시,12시,13시)
 
 on:
   schedule:
