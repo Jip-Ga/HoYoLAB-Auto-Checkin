@@ -1,4 +1,4 @@
-name: HoYoLab 자동 출석 (2차 백업)
+name: HoYoLab 자동 출석 (주요 시간)
 
 on:
   schedule:
