@@ -15,34 +15,16 @@ jobs:
       - name: 레포 체크아웃
         uses: actions/checkout@v4
 
-      - name: 오늘 날짜(한국시간) 구하기
-        id: date
-        run: echo "today=$(TZ='Asia/Seoul' date +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
-
-      - name: 오늘 성공 기록 확인
-        id: cache-check
-        uses: actions/cache@v4
-        with:
-          path: .checkin-done
-          key: checkin-success-${{ steps.date.outputs.today }}
-
       - name: Node.js 설치
-        if: steps.cache-check.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
       - name: 의존성 설치
-        if: steps.cache-check.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
         run: npm install
 
       - name: 출석 체크 실행
-        if: steps.cache-check.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
         env:
           ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
           USE_LAST_AVATAR_WEBHOOK: "o"
         run: node index.js
-
-      - name: 오늘 성공 기록 저장
-        if: steps.cache-check.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
-        run: echo "${{ steps.date.outputs.today }}" > .checkin-done
