@@ -1,10 +1,5 @@
 import fetch from "node-fetch";
 
-/**
- * =========================================================================
- * [계정 설정 가져오기]
- * =========================================================================
- */
 
 const USE_LAST_AVATAR_WEBHOOK = process.env.USE_LAST_AVATAR_WEBHOOK ?? "o";
 
@@ -27,7 +22,8 @@ function loadAccounts() {
  * [자동 출석 게임들]
  * =========================================================================
  */
-const GAMES = {
+
+const GAME_DATA = {
   "원신": {
     url: "https://sg-hk4e-api.hoyolab.com/event/sol/sign?act_id=e202102251931481",
     biz: "hk4e_global"
@@ -47,7 +43,80 @@ const GAMES = {
   }
 };
 
+const GAME_ALIASES = {
+  "원신": [ "겐신","1신","원공노","공월","공월의노래" ],
+  "붕괴: 스타레일": [ "붕스","붕스타","별","스타레일","붕괴스타레일","별붕" ],
+  "붕괴 3rd": [ "붕3","붕3rd","붕괴3rd","3rd" ],
+  "젠레스 존 제로": [ "젠존제","찢","ㅈㅈㅈ","젠레스존제로","zzz" ]
+};
+
+// 위 둘을 합쳐서 실제 조회용 GAMES 객체로 자동 변환 (이 아래는 안 건드려도 됨)
+const GAMES = { ...GAME_DATA };
+for (const [originalName, aliases] of Object.entries(GAME_ALIASES)) {
+  for (const alias of aliases) {
+    GAMES[alias] = GAME_DATA[originalName];
+  }
+}
+
+// 대소문자 구분 없이 찾을 수 있도록 소문자 전용 조회 테이블도 만들어둠
+const GAMES_LOWERCASE = {};
+for (const [name, data] of Object.entries(GAMES)) {
+  GAMES_LOWERCASE[name.toLowerCase()] = data;
+}
+
+function findGame(gameName) {
+  return GAMES[gameName] || GAMES_LOWERCASE[String(gameName).toLowerCase()];
+}
+
+// game 데이터 객체를 보고 GAME_DATA에 있는 "원래 이름"을 거꾸로 찾기 위한 테이블
+const ORIGINAL_NAME_BY_GAME = new Map();
+for (const [originalName, data] of Object.entries(GAME_DATA)) {
+  ORIGINAL_NAME_BY_GAME.set(data, originalName);
+}
+
+/**
+ * =========================================================================
+ * [디스코드 표시 이름 설정]
+ * =========================================================================
+ * ACCOUNTS_JSON에 쓴 게임 이름(별명 포함)을 디스코드 알림에 그대로 보여줄지,
+ * 항상 원래 긴 이름(원신, 붕괴: 스타레일, 붕괴 3rd, 젠레스 존 제로)으로
+ * 통일해서 보여줄지 여기서 정합니다. o/x 대소문자 구분 없음.
+ *
+ * o(기본값) : ACCOUNTS_JSON에 쓴 이름(별명) 그대로 표시
+ * x         : 항상 원래 긴 이름으로 통일해서 표시
+ */
+const SHOW_ALIAS_AS_IS = (process.env.SHOW_ALIAS_AS_IS ?? "o").toLowerCase() === "o";
+
+function getDisplayName(gameName, game) {
+  if (SHOW_ALIAS_AS_IS) return gameName;
+  return ORIGINAL_NAME_BY_GAME.get(game) || gameName;
+}
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * =========================================================================
+ * [구글 드라이브 링크 자동 변환]
+ * =========================================================================
+ * 구글 드라이브 공유 링크를 붙여넣으면 이미지 다이렉트 링크로 자동 변환합니다.
+ * 예: https://drive.google.com/file/d/파일ID/view?usp=sharing
+ *     https://drive.google.com/open?id=파일ID
+ * → https://drive.google.com/uc?export=view&id=파일ID
+ * 구글 드라이브 링크가 아니면(Imgur 등) 원본 그대로 사용합니다.
+ */
+function normalizeAvatarUrl(url) {
+  if (!url) return url;
+
+  if (url.includes("drive.google.com/uc")) return url;
+
+  let match = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+
+  match = url.match(/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/);
+  if (match) return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+
+  return url;
+}
 
 /**
  * =========================================================================
@@ -130,7 +199,7 @@ async function main() {
     let successCount = 0;
 
     for (const gameName of account.GAMES) {
-      const game = GAMES[gameName];
+      const game = findGame(gameName);
       if (!game) continue;
 
       const uidKey = `${account.LTUID}_${gameName}`;
@@ -159,13 +228,15 @@ async function main() {
         allSucceeded = false; // 하나라도 실패하면 전체 실패로 기록
       }
 
+      const displayName = getDisplayName(gameName, game);
+
       fields.push({
-        name: `[${gameName}]`,
+        name: `[${displayName}]`,
         value: `UID : ${uid || "조회 실패"}\n${message}`,
         inline: false
       });
 
-      console.log(`[${account.NAME}] ${gameName}: ${message}`);
+      console.log(`[${account.NAME}] ${displayName}: ${message}`);
 
       await sleep(500);
     }
@@ -189,7 +260,7 @@ async function main() {
     const enabled = USE_LAST_AVATAR_WEBHOOK.toLowerCase() === "o";
     const avatarToUse = enabled && !account.AVATAR && lastAvatarAccount ? lastAvatarAccount.AVATAR : account.AVATAR;
     const webhookToUse = enabled && !account.AVATAR && lastAvatarAccount ? lastAvatarAccount.DISCORD_WEBHOOK : account.DISCORD_WEBHOOK;
-    await sendDiscord(webhookToUse, embed, avatarToUse);
+    await sendDiscord(webhookToUse, embed, normalizeAvatarUrl(avatarToUse));
   }
 
   if (!allSucceeded) {
