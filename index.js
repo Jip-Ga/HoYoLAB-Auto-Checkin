@@ -10,11 +10,30 @@ function loadAccounts() {
       "ACCOUNTS_JSON 환경변수(Secret)가 설정되지 않았습니다. README를 참고해서 GitHub Secret을 등록해주세요."
     );
   }
+
+  let parsed;
   try {
-    return JSON.parse(raw);
+    parsed = JSON.parse(raw);
   } catch (e) {
     throw new Error("ACCOUNTS_JSON 파싱 실패: JSON 형식이 올바른지 확인해주세요. " + e.message);
   }
+
+  // 새 형식: { "SHOW_ALIAS_AS_IS": "o", "ACCOUNTS": [ ... ] }
+  if (!Array.isArray(parsed) && parsed && typeof parsed === "object") {
+    const accounts = parsed.ACCOUNTS;
+    if (!Array.isArray(accounts)) {
+      throw new Error('ACCOUNTS_JSON의 "ACCOUNTS" 값이 배열이 아닙니다. 형식을 확인해주세요.');
+    }
+    const showAliasAsIs = String(parsed.SHOW_ALIAS_AS_IS ?? "o").toLowerCase() === "o";
+    return { accounts, showAliasAsIs };
+  }
+
+  // 예전 형식: 계정 배열을 바로 최상위에 적은 경우 (하위 호환)
+  if (Array.isArray(parsed)) {
+    return { accounts: parsed, showAliasAsIs: true };
+  }
+
+  throw new Error("ACCOUNTS_JSON 형식을 인식할 수 없습니다.");
 }
 
 /**
@@ -45,9 +64,9 @@ const GAME_DATA = {
 
 const GAME_ALIASES = {
   "원신": [ "겐신","1신","원공노","공월","공월의노래" ],
-  "붕괴: 스타레일": [ "붕스","붕스타","별","스타레일","붕괴스타레일","별붕" ],
+  "붕괴: 스타레일": [ "붕스","붕스타","별","별붕","스타레일","붕괴스타레일","붕괴 : 스타레일" ],
   "붕괴 3rd": [ "붕3","붕3rd","붕괴3rd","3rd" ],
-  "젠레스 존 제로": [ "젠존제","찢","ㅈㅈㅈ","젠레스존제로","zzz" ]
+  "젠레스 존 제로": [ "젠존제","찢","ㅈㅈㅈ","젠레스존제로","zzz","젠레스","존","제로","z" ]
 };
 
 // 위 둘을 합쳐서 실제 조회용 GAMES 객체로 자동 변환 (이 아래는 안 건드려도 됨)
@@ -58,7 +77,6 @@ for (const [originalName, aliases] of Object.entries(GAME_ALIASES)) {
   }
 }
 
-// 대소문자 구분 없이 찾을 수 있도록 소문자 전용 조회 테이블도 만들어둠
 const GAMES_LOWERCASE = {};
 for (const [name, data] of Object.entries(GAMES)) {
   GAMES_LOWERCASE[name.toLowerCase()] = data;
@@ -78,14 +96,9 @@ for (const [originalName, data] of Object.entries(GAME_DATA)) {
  * =========================================================================
  * [디스코드 표시 이름 설정]
  * =========================================================================
- * ACCOUNTS_JSON에 쓴 게임 이름(별명 포함)을 디스코드 알림에 그대로 보여줄지,
- * 항상 원래 긴 이름(원신, 붕괴: 스타레일, 붕괴 3rd, 젠레스 존 제로)으로
- * 통일해서 보여줄지 여기서 정합니다. o/x 대소문자 구분 없음.
- *
- * o(기본값) : ACCOUNTS_JSON에 쓴 이름(별명) 그대로 표시
- * x         : 항상 원래 긴 이름으로 통일해서 표시
+ * ACCOUNTS_JSON 최상단의 "SHOW_ALIAS_AS_IS" 값으로 정합니다. (o/x, 대소문자 무관)
  */
-const SHOW_ALIAS_AS_IS = (process.env.SHOW_ALIAS_AS_IS ?? "o").toLowerCase() === "o";
+let SHOW_ALIAS_AS_IS = true;
 
 function getDisplayName(gameName, game) {
   if (SHOW_ALIAS_AS_IS) return gameName;
@@ -190,7 +203,8 @@ async function sendDiscord(webhook, embed, avatar) {
  * =========================================================================
  */
 async function main() {
-  const ACCOUNTS = loadAccounts();
+  const { accounts: ACCOUNTS, showAliasAsIs } = loadAccounts();
+  SHOW_ALIAS_AS_IS = showAliasAsIs;
   const uidStore = {};
   let allSucceeded = true; // 모든 계정, 모든 게임이 성공(또는 이미완료)해야 true 유지
 
