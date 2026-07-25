@@ -4,7 +4,9 @@ UPDATE : `2026-07-25`
 
 **PC 화면에서 작업하시는걸 추천 드립니다.**
 
-- AI 활용해서 깃허브에서 매일 자동으로 돌아가도록 바꾼 버전입니다.
+**검색 : `Ctrl`+`F`**
+
+- AI 활용해서 깃허브에서 매시간 출석 시도 하도록 바꾼 버전입니다.
 - **출석 시간 설정** 방법은 **맨 아래** **`#5. 출석 시간 설정`** 을 참고 하시면 됩니다.
 - 계정 여러개 등록해서 사용 가능합니다.
 
@@ -129,19 +131,19 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 4. `Secret` 값에는 아래 형식대로 계정 정보를 작성해서 붙여 넣은 후 등록 :
 
 
-↓〔 계정 1개 사용 시 코드 〕
+↓↓【 계정 1개 사용 시 코드 】↓↓
 
 ```json
 {
- "SHOW_ALIAS_AS_IS": "x",
+ "SHOW_ALIAS_AS_IS" : "x",
  "ACCOUNTS": [
         {
-         "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
-         "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
+         "LTUID" : "계정1의ㅤltuid_v2ㅤ값",
+         "LTOKEN" : "계정1의ㅤltoken_v2ㅤ값",
          "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
-         "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
-         "NAME" : " 계정1의ㅤ이름 ",
-         "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
+         "DISCORD_WEBHOOK" : "계정1의ㅤ디스코드ㅤ웹훅ㅤURL",
+         "NAME" : "계정1의ㅤ이름",
+         "AVATAR" : "계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL"
         }
     ]
 }
@@ -149,27 +151,27 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <details>
 
-<summary> 〔 계정 2개 이상 사용 시 코드 〕누르면 나옵니다. </summary>
+<summary> 【 계정 2개 이상 사용 시 코드 】누르면 나옵니다. </summary>
 
 ```json
 {
- "SHOW_ALIAS_AS_IS": "x",
+ "SHOW_ALIAS_AS_IS" : "x",
  "ACCOUNTS": [
         {
-         "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
-         "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
+         "LTUID" : "계정1의ㅤltuid_v2ㅤ값",
+         "LTOKEN" : "계정1의ㅤltoken_v2ㅤ값",
          "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
-         "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
-         "NAME" : " 계정1의ㅤ이름 ",
-         "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
+         "DISCORD_WEBHOOK" : "계정1의ㅤ디스코드ㅤ웹훅ㅤURL",
+         "NAME" : "계정1의ㅤ이름",
+         "AVATAR" : "계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL"
         }
         ,{
-         "LTUID" : " 계정2의ㅤltuid_v2ㅤ값 ",
-         "LTOKEN" : " 계정2의ㅤltoken_v2ㅤ값 ",
+         "LTUID" : "계정2의ㅤltuid_v2ㅤ값",
+         "LTOKEN" : "계정2의ㅤltoken_v2ㅤ값",
          "GAMES" : [ "붕괴 3rd", "원신", "붕괴: 스타레일" ],
-         "DISCORD_WEBHOOK" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤURL ",
-         "NAME" : " 계정2의ㅤ이름 ",
-         "AVATAR" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
+         "DISCORD_WEBHOOK" : "계정2의ㅤ디스코드ㅤ웹훅ㅤURL",
+         "NAME" : "계정2의ㅤ이름",
+         "AVATAR" : "계정2의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL"
         }
     ]
 }
@@ -177,21 +179,52 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 </details>
 
-**`"LTUID"`**, **`"LTOKEN"`**, **`"GAMES"`** = **『필수 입력』**
+
+
+
+
+
+## #3-1. 코드 설명 -『필수 입력』
+
+- **`"SHOW_ALIAS_AS_IS"`** : 아래 표시 부분에 별칭을 사용할건지 여부 `"o/x"`
+    - <img width="200" height="210" alt="image" src="https://github.com/user-attachments/assets/b52479c2-e1fc-40ef-a182-8c2b3f8a2995" />
+- **`"GAMES"`** : 출석 원하는 게임 이름/별칭 입력
+    - `[ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ]`
+
+<details>
+<summary> 【 사용 가능한 별칭 】누르면 나옵니다. </summary>
+
+- **별칭 수정은 `index.js` 파일의 `const GAME_ALIASES` 코드 참고.**
+
+```json
+
+const GAME_ALIASES = {
+  "원신": [ "겐신", "1신", "원공노", "공월", "공월의노래" ],
+  "붕괴: 스타레일": [ "붕스", "붕스타", "별", "별붕", "스타레일", "붕괴스타레일", "붕괴 : 스타레일" ],
+  "붕괴 3rd": [ "붕3", "붕3rd", "붕괴3rd", "3rd" ],
+  "젠레스 존 제로": [ "젠존제", "찢", "ㅈㅈㅈ", "젠레스존제로", "zzz", "젠레스", "존", "제로", "z" ]
+};
+
+```
+
+</details>
+
 - **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`#2. 쿠키 값 얻기`** 참고』
 - **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` 『 **`#2. 쿠키 값 얻기`** 참고』
-- **`"GAMES"`** = 출석을 원하는 게임만 입력하여 사용하면 됩니다.
-   - 출석 가능한 게임 : **`["원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로"]`**
-- 『선택사항』`"NAME"`(계정 이름), `"AVATAR"`(웹훅 프로필), `"DISCORD_WEBHOOK"`(웹훅 URL)이 비어 있을 시 가장 마지막에 입력된 값으로 사용 됩니다.
-   - `"NAME"` : 게정 분류용
-     <details>
-     <summary> 이미지 </summary>
-     <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/2e422f67-370a-4751-ac85-6c9398e5147e" />
-     </details>
-    - 미사용 가능 : **`""`**
 
 
+## #3-2. 코드 설명 -『선택사항』
 
+**미사용 시 : `""`**
+
+비어 있을 시 가장 마지막에 입력된 값으로 사용 됩니다.
+
+- **`"NAME"`** = 계정 분류용
+    - <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/2e422f67-370a-4751-ac85-6c9398e5147e" />
+
+
+- **`"AVATAR"`** = 웹훅 프로필
+- **`"DISCORD_WEBHOOK"`** = 웹훅 URL
 
 </details>
 
@@ -224,7 +257,7 @@ HoYoLab 출석 가능 시간 : `한국시간(KST) 01:00` = `중국시간(CST) 00
 </details>
 
 <details>
-<summary> 『시간 설정』누르면 설명 나옵니다. </summary>
+<summary> 『설정 수정 방법』누르면 설명 나옵니다. </summary>
 
 - `.github/workflows` 내부의 **`checkin`** 파일 4개의 `cron` 값을 임의로 수정하여 사용.
     - `KST 09:10` = `UTC 00:10` = **`cron: "10 0 * * *"`**
