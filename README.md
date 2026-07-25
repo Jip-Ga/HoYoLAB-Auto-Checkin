@@ -240,7 +240,9 @@ const GAME_ALIASES = {
 
 
 - **`"AVATAR"`** = 웹훅 프로필
-- **`"DISCORD_WEBHOOK"`** = 웹훅 URL
+    - 일단 저는 구글 드라이브에 올리고 공유 상태로 전환해 사용하고 있습니다.
+        - [google.com/drive/](https://drive.google.com/drive/my-drive)
+- **`"DISCORD_WEBHOOK"`** = 웹훅 URL 『 **`#1. 디스코드 웹훅 만들기`** 참고』
 
 </details>
 
