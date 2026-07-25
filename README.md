@@ -70,7 +70,7 @@
 
 1. 깃허브 계정
 [github.com/](https://github.com/)
-2. 해당 페이지 우측 위 **`Fork`** 로 저장소 및 파일 복사
+2. 해당 페이지 우측 위 **`⑂ Fork`** 로 저장소 및 파일 복사
 
 <img width="457" height="70" alt="image" src="https://github.com/user-attachments/assets/7655cff5-70f1-45b2-9c2f-8e1f1c2938a4" />
 
@@ -271,8 +271,7 @@ HoYoLab 출석 가능 시간 : `한국시간(KST) 01:00` = `중국시간(CST) 00
 <summary> 『기본 설정』누르면 설명 나옵니다. </summary>
 
 - **`매일 한국시간(KST) 00:00 ~ 23:00`**
-    - KST 기준 오늘 하루 출석에 성공한 기록이 있으면, 설정한 시간이 되어도 건너 뛰어 알림이 오지 않습니다.
-        - 수동 실행은 작동함.
+    - 출석 성공/실패, 수동 실행만 디스코드로 전송됩니다.
 
 </details>
 
