@@ -132,7 +132,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 4. `Secret` 값에는 아래 형식대로 계정 정보를 작성해서 붙여 넣은 후 등록 :
 
 
-↓↓【 계정 1개 사용 시 코드 】↓↓
+▶▶ 【 계정 1개 사용 시 코드 】
 
 ```json
 {
@@ -237,8 +237,10 @@ const GAME_ALIASES = {
 
 <summary> 『필수사항』누르면 설명 나옵니다. </summary>
 
-- **테스트 : 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석` → `Run workflow ▼` → `Run workflow` 클릭**
-- 실행 로그는 `Actions` 탭의 각 실행 기록에서 확인 가능.
+- **수동 테스트 : 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석 (아무거나)` → `Run workflow ▼` → `Run workflow` 클릭**
+    - 해당 **`▶️Actions`** 탭의 각 실행 로그 확인 가능.
+    - <img width="300" height="215" alt="image" src="https://github.com/user-attachments/assets/8d87b3d8-8868-4684-9c84-dad67c9d793e" />
+    - <img width="300" height="156" alt="image" src="https://github.com/user-attachments/assets/e21543a5-1952-4673-a23e-f9bcfd6cd62b" />
 
 </details>
 
