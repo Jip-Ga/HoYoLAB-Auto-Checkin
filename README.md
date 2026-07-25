@@ -41,11 +41,12 @@
 
 <summary> 〔 실패 결과 디스코드 전송 〕 </summary>
 
-- 실패 시 실패 이유(누락/조회 불가 등등)가 작성 되어 나옵니다.
-    - 아래 사진은 캐릭터 조회가 안되어 실패 처리 = 게임 계정이 없다.
+- 실패 시 실패 이유가(입력 누락/조회 불가 등등) 작성 되어 나옵니다.
+    - 아래 사진은 해당 HoYo 계정에 캐릭터 조회가 안되어 실패 처리 = 실제로 저 계정은 스타레일만 있음.
 
 <img width="1000" height="313" alt="image" src="https://github.com/user-attachments/assets/97fad6f5-b96b-43c6-890b-da08d8f0877f" />
-<img width="500" height="621" alt="image" src="https://github.com/user-attachments/assets/40cdf464-147b-4a3f-8805-6ac0fd6ec767" />
+<img width="500" height="621" alt="image" src="https://github.com/user-attachments/assets/39503f9e-f303-4a88-a98f-d16cbcd0ede0" />
+
 
 </details>
 
