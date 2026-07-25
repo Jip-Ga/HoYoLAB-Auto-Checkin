@@ -208,9 +208,14 @@ async function main() {
   const uidStore = {};
   let allSucceeded = true; // 모든 계정, 모든 게임이 성공(또는 이미완료)해야 true 유지
 
+  // 수동 실행(workflow_dispatch)인지 여부 (GitHub Actions가 자동으로 넣어주는 값)
+  const isManualRun = process.env.GITHUB_EVENT_NAME === "workflow_dispatch";
+
   for (const account of ACCOUNTS) {
     const fields = [];
     let successCount = 0;
+    let hasNewSuccess = false; // "출석 체크 성공!"(진짜 새로 출석함)이 하나라도 있으면 true
+    let hasFailure = false; // 실패(쿠키 만료, 오류 등)가 하나라도 있으면 true
 
     for (const gameName of account.GAMES) {
       const game = findGame(gameName);
@@ -238,8 +243,11 @@ async function main() {
       const message = result ? result.message : "출석 실패 ❌";
       if (result?.success) {
         successCount++;
+        // retcode 0(방금 새로 출석 성공)일 때만 "새 성공"으로 표시, 이미완료(-5003)는 제외
+        if (message.includes("출석 체크 성공")) hasNewSuccess = true;
       } else {
         allSucceeded = false; // 하나라도 실패하면 전체 실패로 기록
+        hasFailure = true;
       }
 
       const displayName = getDisplayName(gameName, game);
@@ -274,13 +282,22 @@ async function main() {
     const enabled = USE_LAST_AVATAR_WEBHOOK.toLowerCase() === "o";
     const avatarToUse = enabled && !account.AVATAR && lastAvatarAccount ? lastAvatarAccount.AVATAR : account.AVATAR;
     const webhookToUse = enabled && !account.AVATAR && lastAvatarAccount ? lastAvatarAccount.DISCORD_WEBHOOK : account.DISCORD_WEBHOOK;
-    await sendDiscord(webhookToUse, embed, normalizeAvatarUrl(avatarToUse));
+
+    // 수동 실행이면 무조건 전송.
+    // 자동 실행이면 "진짜 새 출석 성공" 또는 "실패"가 있을 때만 전송하고,
+    // 전부 "이미 완료"뿐이면 조용히 스킵(디스코드 스팸 방지).
+    const shouldNotify = isManualRun || hasNewSuccess || hasFailure;
+
+    if (shouldNotify) {
+      await sendDiscord(webhookToUse, embed, normalizeAvatarUrl(avatarToUse));
+    } else {
+      console.log(`[${account.NAME}] 전부 이미 완료 상태라 디스코드 전송을 건너뜁니다.`);
+    }
   }
 
   if (!allSucceeded) {
     // 하나라도 출석 실패(쿠키 만료, API 오류 등)가 있으면
-    // 워크플로우 자체를 실패(exit 1) 처리해서, 다음 백업 스케줄이 다시 시도하고
-    // "오늘 성공 기록" 캐시도 저장되지 않게 함
+    // 워크플로우 자체를 실패(exit 1) 처리
     console.error("일부 계정/게임 출석이 실패했습니다. 워크플로우를 실패로 표시합니다.");
     process.exitCode = 1;
   }
