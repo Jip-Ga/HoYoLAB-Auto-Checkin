@@ -28,5 +28,3 @@ jobs:
           ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
           USE_LAST_AVATAR_WEBHOOK: "o"
         run: node index.js
-        if: steps.cache-check.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
-        run: echo "${{ steps.date.outputs.today }}" > .checkin-done
