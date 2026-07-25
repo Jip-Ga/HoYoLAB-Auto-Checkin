@@ -43,6 +43,10 @@ function loadAccounts() {
  */
 
 const GAME_DATA = {
+  "붕괴 3rd": {
+    url: "https://sg-public-api.hoyolab.com/event/mani/sign?act_id=e202110291205111",
+    biz: "bh3_global"
+  },
   "원신": {
     url: "https://sg-hk4e-api.hoyolab.com/event/sol/sign?act_id=e202102251931481",
     biz: "hk4e_global"
@@ -50,10 +54,6 @@ const GAME_DATA = {
   "붕괴: 스타레일": {
     url: "https://sg-public-api.hoyolab.com/event/luna/os/sign?act_id=e202303301540311",
     biz: "hkrpg_global"
-  },
-  "붕괴 3rd": {
-    url: "https://sg-public-api.hoyolab.com/event/mani/sign?act_id=e202110291205111",
-    biz: "bh3_global"
   },
   "젠레스 존 제로": {
     url: "https://sg-public-api.hoyolab.com/event/luna/zzz/os/sign?act_id=e202406031448091&lang=ko-kr",
