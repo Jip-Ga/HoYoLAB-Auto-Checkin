@@ -132,16 +132,19 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ↓〔 계정 1개 사용 시 코드 〕
 
 ```json
-[
-  {
-    "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
-    "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
-    "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
-    "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
-    "NAME" : " 계정1의ㅤ이름 ",
-    "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
-  }
-]
+{
+ "SHOW_ALIAS_AS_IS": "x",
+ "ACCOUNTS": [
+        {
+         "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
+         "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
+         "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
+         "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
+         "NAME" : " 계정1의ㅤ이름 ",
+         "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
+        }
+    ]
+}
 ```
 
 <details>
@@ -149,24 +152,27 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 <summary> 〔 계정 2개 이상 사용 시 코드 〕누르면 나옵니다. </summary>
 
 ```json
-[
-  {
-    "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
-    "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
-    "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
-    "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
-    "NAME" : " 계정1의ㅤ이름 ",
-    "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
-  }
-  ,{
-    "LTUID" : " 계정2의ㅤltuid_v2ㅤ값 ",
-    "LTOKEN" : " 계정2의ㅤltoken_v2ㅤ값 ",
-    "GAMES" : [ "붕괴 3rd", "원신", "붕괴: 스타레일" ],
-    "DISCORD_WEBHOOK" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤURL ",
-    "NAME" : " 계정2의ㅤ이름 ",
-    "AVATAR" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
-  }
-]
+{
+ "SHOW_ALIAS_AS_IS": "x",
+ "ACCOUNTS": [
+        {
+         "LTUID" : " 계정1의ㅤltuid_v2ㅤ값 ",
+         "LTOKEN" : " 계정1의ㅤltoken_v2ㅤ값 ",
+         "GAMES" : [ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ],
+         "DISCORD_WEBHOOK" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤURL ",
+         "NAME" : " 계정1의ㅤ이름 ",
+         "AVATAR" : " 계정1의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
+        }
+        ,{
+         "LTUID" : " 계정2의ㅤltuid_v2ㅤ값 ",
+         "LTOKEN" : " 계정2의ㅤltoken_v2ㅤ값 ",
+         "GAMES" : [ "붕괴 3rd", "원신", "붕괴: 스타레일" ],
+         "DISCORD_WEBHOOK" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤURL ",
+         "NAME" : " 계정2의ㅤ이름 ",
+         "AVATAR" : " 계정2의ㅤ디스코드ㅤ웹훅ㅤ프로필ㅤ이미지ㅤURL "
+        }
+    ]
+}
 ```
 
 </details>
