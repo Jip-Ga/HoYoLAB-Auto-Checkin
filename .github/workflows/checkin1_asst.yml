@@ -1,4 +1,4 @@
-name: HoYoLab 자동 출석 (오전 1시~5시)_백업
+name: HoYoLab 자동 출석 (오전 1시~5시)_asst
 
 on:
   schedule:
