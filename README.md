@@ -39,6 +39,8 @@
 
 <summary> 〔 성공 결과 디스코드 전송 〕← (누르면 나옵니다.) </summary>
 
+- **`이미 오늘 출석 완료 ✅`** 메시지는 수동 실행으로만 디스코드로 보내집니다.
+
 <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/80116e53-0dab-4fcb-882c-85fd79bb4eee" />
 <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/749ea2d7-28d2-4470-95fb-ae6fc3fc884c" />
 
@@ -118,11 +120,12 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 2. `F12` (개발자 도구) 열기
 3. 상단 **`Application`** 탭 클릭
 4. 왼쪽 **`Cookies`** → `https://www.hoyolab.com` 클릭
-5. Name 목록에서 **`ltuid_v2`**, **`ltoken_v2`** 값을 각각 복사
+5. `F5` (새로고침)
+6. Name 목록에서 **`ltuid_v2`**, **`ltoken_v2`** 값을 각각 복사
 
-<img width="597" height="176" alt="image" src="https://github.com/user-attachments/assets/125bc8b8-f172-4d90-9a3b-ad822da6b6cc" />
+<img width="597" height="176" alt="image" src="https://github.com/user-attachments/assets/91d3dce0-a4d4-42eb-81bd-a28706253b4e" />
 
-해당하는 Value(값) 누르면 아래에 개발자 도구창 아래에 자세히 나옵니다.
+각각에 해당하는 **Value(값) 누르면 개발자 도구창 아래에** 자세히 나오니 그 값을 복사하세요.
 
 - **목록에서 안보일 시 `F5` (새로고침)**
 - 동일 브라우저에서 새로 로그인 할 때 마다 **`ltoken_v2`** 값이 바뀌니 주의
@@ -137,7 +140,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
 
-1. 복사된 본인 저장소에서 → **상단 탭 `⚙️Settings`** → 왼쪽 아래 쯤에 `*️⃣Secrets and variables` → `Actions` 
+1. **`⑂ Fork`** 로 복사된 본인 저장소에서 → **상단 탭 `⚙️Settings`** → 왼쪽 아래 쯤에 `*️⃣Secrets and variables` → `Actions` 
 2. **`New repository secret`** (초록색) 클릭
 3. Name : **`ACCOUNTS_JSON`**
 4. `Secret` 값에는 아래 형식대로 계정 정보를 작성해서 붙여 넣은 후 등록 :
@@ -259,10 +262,10 @@ const GAME_ALIASES = {
 
 <summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
 
-- **수동 테스트 : 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석 (아무거나)` → `Run workflow ▼` → `Run workflow` 클릭**
+- **수동 테스트 : **`⑂ Fork`** 로 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석 (아무거나)` → `Run workflow ▼` → `Run workflow` 클릭**
     - 해당 **`▶️Actions`** 탭의 각 실행 로그 확인 가능.
-    - <img width="300" height="215" alt="image" src="https://github.com/user-attachments/assets/8d87b3d8-8868-4684-9c84-dad67c9d793e" />
-    - <img width="300" height="156" alt="image" src="https://github.com/user-attachments/assets/e21543a5-1952-4673-a23e-f9bcfd6cd62b" />
+    - <img width="300" height="173" alt="image" src="https://github.com/user-attachments/assets/c0af957e-83af-4066-9601-3faf8a12f95b" />
+      <img width="300" height="156" alt="image" src="https://github.com/user-attachments/assets/e21543a5-1952-4673-a23e-f9bcfd6cd62b" />
 
 </details>
 
