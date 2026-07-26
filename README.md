@@ -11,13 +11,21 @@
 - 계정 여러개 등록해서 사용 가능합니다.
 
 
+<details>
+
+<summary> ← 이 모양 있는 문장 누르면 추가 설명이 나오고 </summary>
+다시 누르면 닫힙니다. ┛
+
+</details>
+
+
 
 ---
 ## #실행 결과
 
 <details>
 
-<summary> 〔 디스코드 핸드폰 알림 〕 </summary>
+<summary> 〔 디스코드 핸드폰 알림 〕← (누르면 나옵니다.) </summary>
 
 - 각각 다른 채널의 웹훅을 사용해야 분리 되서 알림이 옵니다.
     - 아래 사진은 동일 채널에서 웹훅 2개를 사용함.
@@ -29,7 +37,7 @@
 
 <details>
 
-<summary> 〔 성공 결과 디스코드 전송 〕 </summary>
+<summary> 〔 성공 결과 디스코드 전송 〕← (누르면 나옵니다.) </summary>
 
 <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/80116e53-0dab-4fcb-882c-85fd79bb4eee" />
 <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/749ea2d7-28d2-4470-95fb-ae6fc3fc884c" />
@@ -39,7 +47,7 @@
 
 <details>
 
-<summary> 〔 실패 결과 디스코드 전송 〕 </summary>
+<summary> 〔 실패 결과 디스코드 전송 〕← (누르면 나옵니다.) </summary>
 
 - 실패 시 실패 이유가(쿠키 만료, API 오류, 조회 불가 등등) 작성 되어 나옵니다.
     - 아래 사진은 해당 HoYo 계정에 캐릭터 조회가 안되어 실패 처리 = 실제로 저 계정은 스타레일만 있음.
@@ -84,7 +92,7 @@
 
 <details>
 
-<summary> 『선택사항』누르면 설명 나옵니다. </summary>
+<summary> 『선택사항』← (누르면 설명 나옵니다.) </summary>
 
 PC 화면에서만 웹후크 생성이 가능합니다.
 
@@ -104,7 +112,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <details>
 
-<summary> 『필수사항』누르면 설명 나옵니다. </summary>
+<summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
 
 1. [hoyolab.com](https://www.hoyolab.com) 로그인
 2. `F12` (개발자 도구) 열기
@@ -127,16 +135,15 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <details>
 
-<summary> 『필수사항』누르면 설명 나옵니다. </summary>
+<summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
 
-1. 복사된 본인 저장소에서 → `⚙️Settings` 상단 탭 → `*️⃣Secrets and variables` (왼쪽 아래 쯤) → `Actions` 
-
+1. 복사된 본인 저장소에서 → **상단 탭 `⚙️Settings`** → 왼쪽 아래 쯤에 `*️⃣Secrets and variables` → `Actions` 
 2. **`New repository secret`** (초록색) 클릭
 3. Name : **`ACCOUNTS_JSON`**
 4. `Secret` 값에는 아래 형식대로 계정 정보를 작성해서 붙여 넣은 후 등록 :
 
 
-▶▶ 【 HoYo 계정 1개 사용 시 코드 】
+★【 HoYo 계정 1개 사용 시 코드 】★
 
 ```json
 {
@@ -156,7 +163,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <details>
 
-<summary> 【 HoYo 계정 2개 이상 사용 시 코드 】누르면 나옵니다. </summary>
+<summary> ★【 HoYo 계정 2개 이상 사용 시 코드 】★ ← (누르면 나옵니다.) </summary>
 
 ```json
 {
@@ -207,7 +214,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
     - 입력 순서에 따라 출력 순서가 바뀝니다.
 
 <details>
-<summary> 【 사용 가능한 별칭 】누르면 나옵니다. </summary>
+<summary> 【 사용 가능한 별칭 】← (누르면 나옵니다.) </summary>
 
 - **별칭 수정은 `index.js` 파일의 `const GAME_ALIASES` 코드 참고.**
     - 수정 시 별칭 겹치지 않게 주의
@@ -225,8 +232,8 @@ const GAME_ALIASES = {
 
 </details>
 
-- **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`#2. 쿠키 값 얻기`** 참고』
-- **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` 『 **`#2. 쿠키 값 얻기`** 참고』
+- **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`#2. 쿠키 값 얻기`** 참고 』
+- **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` 『 **`#2. 쿠키 값 얻기`** 참고 』
 
 
 ## #3-2. 코드 설명 -『선택사항』
@@ -237,12 +244,10 @@ const GAME_ALIASES = {
 
 - **`"NAME"`** = 계정 분류용
     - <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/2e422f67-370a-4751-ac85-6c9398e5147e" />
-
-
 - **`"AVATAR"`** = 웹훅 프로필
     - 일단 저는 구글 드라이브에 올리고 공유 상태로 전환해 사용하고 있습니다.
         - [google.com/drive/](https://drive.google.com/drive/my-drive)
-- **`"DISCORD_WEBHOOK"`** = 웹훅 URL 『 **`#1. 디스코드 웹훅 만들기`** 참고』
+- **`"DISCORD_WEBHOOK"`** = 웹훅 URL 『 **`#1. 디스코드 웹훅 만들기`** 참고 』
 
 </details>
 
@@ -252,7 +257,7 @@ const GAME_ALIASES = {
 
 <details>
 
-<summary> 『필수사항』누르면 설명 나옵니다. </summary>
+<summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
 
 - **수동 테스트 : 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석 (아무거나)` → `Run workflow ▼` → `Run workflow` 클릭**
     - 해당 **`▶️Actions`** 탭의 각 실행 로그 확인 가능.
@@ -268,15 +273,15 @@ const GAME_ALIASES = {
 HoYoLab 출석 가능 시간 : `한국시간(KST) 01:00` = `중국시간(CST) 00:00` = `UTC 16:00`
 
 <details>
-<summary> 『기본 설정』누르면 설명 나옵니다. </summary>
+<summary> 『기본 설정』← (누르면 설명 나옵니다.) </summary>
 
-- **`매일 한국시간(KST) 00:00 ~ 23:00`**
+- **`매일 한국시간(KST) 01:16 ~ 05:46, 20:00 ~ 23:00. 총 8회`**
     - 출석 성공/실패, 수동 실행만 디스코드로 전송됩니다.
 
 </details>
 
 <details>
-<summary> 『설정 수정 방법』누르면 설명 나옵니다. </summary>
+<summary> 『설정 수정 방법』← (누르면 설명 나옵니다.) </summary>
 
 - `.github/workflows` 내부의 **`checkin`** 파일 4개의 `cron` 값을 임의로 수정하여 사용.
     - `KST 09:10` = `UTC 00:10` = **`cron: "10 0 * * *"`**
