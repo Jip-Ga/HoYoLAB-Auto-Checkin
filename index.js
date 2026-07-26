@@ -251,12 +251,19 @@ async function main() {
       }
 
       const displayName = getDisplayName(gameName, game);
+      const isAlreadyDone = message.includes("이미 오늘 출석 완료");
 
-      fields.push({
-        name: `[${displayName}]`,
-        value: `UID : ${uid || "조회 실패"}\n${message}`,
-        inline: false
-      });
+      // 자동 실행이면 "이미 완료"된 게임은 디스코드 목록에서 숨김.
+      // 수동 실행이면 항상 전부 표시.
+      const shouldShowField = isManualRun || !isAlreadyDone;
+
+      if (shouldShowField) {
+        fields.push({
+          name: `[${displayName}]`,
+          value: `UID : ${uid || "조회 실패"}\n${message}`,
+          inline: false
+        });
+      }
 
       console.log(`[${account.NAME}] ${displayName}: ${message}`);
 
