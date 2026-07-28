@@ -1,12 +1,12 @@
 # HoYoLab 자동 출석 (GitHub 버전)
 
-**Feature Update :** `2026-07-26`
+**기능 업데이트 :** `2026-07-26`
 
-**검색 : `Ctrl`+`F`**
+**PC 화면에서 작업하시는 걸 추천 드립니다.**
 
-**PC 화면에서 작업하시는걸 추천 드립니다.**
+**검색 기능 : `Ctrl`+`F`**
 
-- AI 활용해서 깃허브에서 출석 시도 하도록 바꾼 버전입니다.
+- AI 활용해서 깃허브에서 설정 시간마다 자동으로 출석 시도 하도록 바꾼 버전입니다.
 - **출석 시간 설정** 방법은 **맨 아래** **`#5. 출석 시간 설정`** 을 참고 하시면 됩니다.
 - 계정 여러개 등록해서 사용 가능합니다.
 
@@ -25,10 +25,10 @@
 
 <details>
 
-<summary> 〔 디스코드 핸드폰 알림 〕← (누르면 나옵니다.) </summary>
+<summary> 〔 디스코드 핸드폰 알림 〕 </summary>
 
-- 각각 다른 채널의 웹훅을 사용해야 분리 되서 알림이 옵니다.
-    - 아래 사진은 동일 채널에서 웹훅 2개를 사용함.
+- 각각 다른 채널의 웹훅 사용 시 알림이 분리돼서 옵니다.
+    - 아래 사진은 1개의 채널에서 웹훅 2개를 사용함.
 
 <img width="500" height="375" alt="20260725_074533" src="https://github.com/user-attachments/assets/a750c7bc-1b03-4e6f-b420-3a641f64c87d" />
 
@@ -37,7 +37,7 @@
 
 <details>
 
-<summary> 〔 성공 결과 디스코드 전송 〕← (누르면 나옵니다.) </summary>
+<summary> 〔 성공 결과 디스코드 전송 〕 </summary>
 
 - **`이미 오늘 출석 완료 ✅`** 메시지는 수동 실행으로만 디스코드로 보내집니다.
 
@@ -49,10 +49,10 @@
 
 <details>
 
-<summary> 〔 실패 결과 디스코드 전송 〕← (누르면 나옵니다.) </summary>
+<summary> 〔 실패 결과 디스코드 전송 〕 </summary>
 
 - 실패 시 실패 이유가(쿠키 만료, API 오류, 조회 불가 등등) 작성 되어 나옵니다.
-    - 아래 사진은 해당 HoYo 계정에 캐릭터 조회가 안되어 실패 처리 = 실제로 저 계정은 스타레일만 있음.
+    - 아래 사진은 해당 HoYo 계정에 캐릭터 조회가 안되어 실패 처리 = 실제로 `부계1`은 스타레일만 존재함.
 
 <img width="1000" height="313" alt="image" src="https://github.com/user-attachments/assets/97fad6f5-b96b-43c6-890b-da08d8f0877f" />
 <img width="500" height="621" alt="image" src="https://github.com/user-attachments/assets/39503f9e-f303-4a88-a98f-d16cbcd0ede0" />
@@ -60,6 +60,8 @@
 
 </details>
 
+- 자동 실행 출력 : 출석 성공/실패
+- 수동 실행 출력 : 출석 성공/실패, 이미 출석 완료
 
 
 ---
@@ -79,7 +81,10 @@
 ## #0. 준비물
 
 1. 깃허브 계정
-[github.com/](https://github.com/)
+[[GitHub](https://github.com/)]
+, [[로그인 페이지](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fwhy-github%3Flocale%3Dko-kr)]
+, [[계정 생성 페이지](https://github.com/signup?return_to=https%3A%2F%2Fgithub.com%2Fwhy-github%3Flocale%3Dko-kr&source=login)]
+
 2. 해당 페이지 우측 위 **`⑂ Fork`** 로 저장소 및 파일 복사
 
 <img width="457" height="70" alt="image" src="https://github.com/user-attachments/assets/7655cff5-70f1-45b2-9c2f-8e1f1c2938a4" />
@@ -94,11 +99,11 @@
 
 <details>
 
-<summary> 『선택사항』← (누르면 설명 나옵니다.) </summary>
+<summary> 『선택사항』 </summary>
 
 PC 화면에서만 웹후크 생성이 가능합니다.
 
-[Discord 브라우저](https://discord.com/channels/@me)
+[[Discord-웹브라우저](https://discord.com/channels/@me)]
 
 1. **개인 서버 만드는 방법은 생략**
 2. 채널 생성『선택사항』
@@ -111,24 +116,26 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ## #2. 쿠키 값 얻기 (메모장 작성 추천)
 
 - **자주 사용하지 않는 브라우저로 실행하는 것 추천.**
+- 동일 브라우저에서 HoYoLab에 재로그인 할 경우 쿠키값(**`ltoken_v2`**)이 갱신됨.
 
 <details>
 
-<summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
+<summary> 『필수사항』 </summary>
 
-1. [hoyolab.com](https://www.hoyolab.com) 로그인
+1. HoYoLAB 로그인 [[HoYoLAB](https://www.hoyolab.com/home)]
 2. `F12` (개발자 도구) 열기
 3. 상단 **`Application`** 탭 클릭
 4. 왼쪽 **`Cookies`** → `https://www.hoyolab.com` 클릭
 5. `F5` (새로고침)
-6. Name 목록에서 **`ltuid_v2`**, **`ltoken_v2`** 값을 각각 복사
+6. Name 목록에서 **`ltoken_v2`**, **`ltuid_v2`** 값을 각각 복사
 
-<img width="597" height="176" alt="image" src="https://github.com/user-attachments/assets/91d3dce0-a4d4-42eb-81bd-a28706253b4e" />
+<img width="597" height="176" alt="image" src="https://github.com/user-attachments/assets/5df01e40-93ed-4d35-ab20-34a8b6cd7bf4" />
 
-각각에 해당하는 **Value(값) 누르면 개발자 도구창 아래에** 자세히 나오니 그 값을 복사하세요.
+각각에 해당하는 Value(값) 누르면 **개발자 도구창 맨아래에 자세히** 나옵니다.
 
+- **`ltoken_v2`** = v2_CAISDGM5... (매우 긺)
+- **`ltuid_v2`** = 숫자 여러개값
 - **목록에서 안보일 시 `F5` (새로고침)**
-- 동일 브라우저에서 새로 로그인 할 때 마다 **`ltoken_v2`** 값이 바뀌니 주의
 
 </details>
 
@@ -138,7 +145,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <details>
 
-<summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
+<summary> 『필수사항』 </summary>
 
 1. **`⑂ Fork`** 로 복사된 본인 저장소에서 → **상단 탭 `⚙️Settings`** → 왼쪽 아래 쯤에 `*️⃣Secrets and variables` → `Actions` 
 2. **`New repository secret`** (초록색) 클릭
@@ -166,7 +173,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 
 <details>
 
-<summary> ★【 HoYo 계정 2개 이상 사용 시 코드 】★ ← (누르면 나옵니다.) </summary>
+<summary> ★【 HoYo 계정 2개 이상 사용 시 코드 】★ </summary>
 
 ```json
 {
@@ -193,7 +200,7 @@ PC 화면에서만 웹후크 생성이 가능합니다.
 ```
 
 
-┏ HoYo 계정 더 추가 시 위와 같은 방식으로 이어 붙이면됩니다.
+┏ HoYo 계정 추가 시 위와 같은 방식으로 이어 붙이면됩니다.
 ```json
         ,{
          "LTUID" : "ltuid_v2ㅤ값",
@@ -214,13 +221,13 @@ PC 화면에서만 웹후크 생성이 가능합니다.
     - <img width="200" height="210" alt="image" src="https://github.com/user-attachments/assets/b52479c2-e1fc-40ef-a182-8c2b3f8a2995" />
 - **`"GAMES"`** : 출석 원하는 게임 이름/별칭 입력
     - `[ "원신", "붕괴: 스타레일", "붕괴 3rd", "젠레스 존 제로" ]`
-    - 입력 순서에 따라 출력 순서가 바뀝니다.
+    - 입력 순서에 따라 사진의 출석 순서가 바뀝니다.
 
 <details>
-<summary> 【 사용 가능한 별칭 】← (누르면 나옵니다.) </summary>
+<summary> ㅡㅡ【 사용 가능한 별칭 】ㅡㅡ </summary>
 
-- **별칭 수정은 `index.js` 파일의 `const GAME_ALIASES` 코드 참고.**
-    - 수정 시 별칭 겹치지 않게 주의
+- **별칭 수정 : `index.js` 파일의 `const GAME_ALIASES` 코드 참고.**
+    - 별칭 중복 작성 주의
 
 ```json
 
@@ -233,6 +240,8 @@ const GAME_ALIASES = {
 
 ```
 
+┗ `[ "붕3", "원공노", "별", "zzz" ]` 이런 식으로 사용.
+
 </details>
 
 - **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`#2. 쿠키 값 얻기`** 참고 』
@@ -241,15 +250,25 @@ const GAME_ALIASES = {
 
 ## #3-2. 코드 설명 -『선택사항』
 
-**미사용 시 : `""`**
+**미사용 시 입력 :**
 
-비어 있을 시 가장 마지막에 입력된 값으로 사용 됩니다.
+```json
+
+"NAME" : ""
+"AVATAR" : ""
+"DISCORD_WEBHOOK" : ""
+
+```
+
+값이 비어 있을 시 가장 마지막에 입력된 값으로 사용 됩니다.
+
+= 모든 계정의 값이 비어야 미사용
 
 - **`"NAME"`** = 계정 분류용
     - <img width="200" height="352" alt="image" src="https://github.com/user-attachments/assets/2e422f67-370a-4751-ac85-6c9398e5147e" />
 - **`"AVATAR"`** = 웹훅 프로필
-    - 일단 저는 구글 드라이브에 올리고 공유 상태로 전환해 사용하고 있습니다.
-        - [google.com/drive/](https://drive.google.com/drive/my-drive)
+    - 일단 저는 구글 드라이브에 1:1비율 이미지 올리고 공유 상태로 전환해 사용하고 있습니다.
+        - [[Google Drive](https://drive.google.com/drive/my-drive)]
 - **`"DISCORD_WEBHOOK"`** = 웹훅 URL 『 **`#1. 디스코드 웹훅 만들기`** 참고 』
 
 </details>
@@ -260,10 +279,10 @@ const GAME_ALIASES = {
 
 <details>
 
-<summary> 『필수사항』← (누르면 설명 나옵니다.) </summary>
+<summary> 『필수사항』 </summary>
 
-- **수동 테스트 : **`⑂ Fork`** 로 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석 (아무거나)` → `Run workflow ▼` → `Run workflow` 클릭**
-    - 해당 **`▶️Actions`** 탭의 각 실행 로그 확인 가능.
+- **수동 테스트 : **`⑂ Fork`** 로 복사된 본인 저장소의 `▶️Actions` 상단 탭 → `HoYoLab 자동 출석 (아무거나)` → `Run workflow ▼` → `Run workflow`**
+    - **`▶️Actions`** 탭에서 실행 로그 확인 가능.
     - <img width="300" height="173" alt="image" src="https://github.com/user-attachments/assets/c0af957e-83af-4066-9601-3faf8a12f95b" />
       <img width="300" height="156" alt="image" src="https://github.com/user-attachments/assets/e21543a5-1952-4673-a23e-f9bcfd6cd62b" />
 
@@ -276,7 +295,7 @@ const GAME_ALIASES = {
 HoYoLab 출석 가능 시간 : `한국시간(KST) 01:00` = `중국시간(CST) 00:00` = `UTC 16:00`
 
 <details>
-<summary> 『기본 설정』← (누르면 설명 나옵니다.) </summary>
+<summary> 『기본 설정』 </summary>
 
 - **`매일 한국시간(KST) 01:16 ~ 05:46, 20:00 ~ 23:00. 총 8회`**
     - 출석 성공/실패, 수동 실행만 디스코드로 전송됩니다.
@@ -284,14 +303,16 @@ HoYoLab 출석 가능 시간 : `한국시간(KST) 01:00` = `중국시간(CST) 00
 </details>
 
 <details>
-<summary> 『설정 수정 방법』← (누르면 설명 나옵니다.) </summary>
+<summary> 『설정 수정 방법』 </summary>
 
-- `.github/workflows` 내부의 **`checkin`** 파일 4개의 `cron` 값을 임의로 수정하여 사용.
+- **`.github/workflows` 폴더 내부의 `checkin` 파일의 `cron` 값을 수정**
     - `KST 09:10` = `UTC 00:10` = **`cron: "10 0 * * *"`**
-    - **추천 변환기 사이트** : [datetime360.com](https://datetime360.com/ko/utc-seoul-time/)
-- 하루에 파일 내용을 자주 바꿀 시 스케줄러가 작동 안할 수도 있습니다.
-    - 이건 GitHub 서버의 고질적 문제라 외부 서비스에서 GitHub API를 호출해서 workflow_dispatch를 트리거 해야합니다.
-    - 또는, 스케줄러 작동 안하는 하루만 수동 작동하고, UTC 기준 다음날부터 스케줄러가 작동하는지 지켜보면 됩니다.
+    - 시간 변환 추천 사이트 : [[Datetime360](https://datetime360.com/ko/utc-seoul-time/)]
+- **하루에 파일 내용을 자주 바꿀 시 스케줄러가 작동 안할 수도 있습니다.**
+    - 스케줄러 작동 안하는 **하루만 수동 작동**하고, UTC 기준 **다음날부터 스케줄러가 작동하는지 지켜보면 됩니다.**
+    - GitHub 서버에 사람이 많아 생긴 문제라 외부 서비스에서 GitHub API를 호출해서 workflow_dispatch를 트리거 해야합니다.
+        - 외부 호출 관련은 AI한테 물어보면 답변 잘해줄겁니다 :)
+
 
 </details>
 
