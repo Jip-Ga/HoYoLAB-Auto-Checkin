@@ -244,8 +244,8 @@ const GAME_ALIASES = {
 
 </details>
 
-- **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` 『 **`#2. 쿠키 값 얻기`** 참고 』
-- **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` 『 **`#2. 쿠키 값 얻기`** 참고 』
+- **`"LTUID"`** = **`ltuid_v2`** `(유저 고유 ID)` ([[#2. 쿠키 값 얻기](https://github.com/Jip-Ga/HoYoLAB-Auto-Checkin/blob/main/README.md#2-쿠키-값-얻기-메모장-작성-추천)] 참고)
+- **`"LTOKEN"`** = **`ltoken_v2`** `(로그인 쿠키값)` ([[#2. 쿠키 값 얻기](https://github.com/Jip-Ga/HoYoLAB-Auto-Checkin/blob/main/README.md#2-쿠키-값-얻기-메모장-작성-추천)] 참고)
 
 
 ## #3-2. 코드 설명 -『선택사항』
@@ -269,7 +269,7 @@ const GAME_ALIASES = {
 - **`"AVATAR"`** = 웹훅 프로필
     - 일단 저는 구글 드라이브에 1:1비율 이미지 올리고 공유 상태로 전환해 사용하고 있습니다.
         - [[Google Drive](https://drive.google.com/drive/my-drive)]
-- **`"DISCORD_WEBHOOK"`** = 웹훅 URL 『 **`#1. 디스코드 웹훅 만들기`** 참고 』
+- **`"DISCORD_WEBHOOK"`** = 웹훅 URL ([[#1. 디스코드 웹훅 만들기](https://github.com/Jip-Ga/HoYoLAB-Auto-Checkin/blob/main/README.md#1-디스코드-웹훅-만들기-메모장-작성-추천)] 참고)
 
 </details>
 
