@@ -1,6 +1,6 @@
 # HoYoLab 자동 출석 (GitHub 버전)
 
-**UPDATE :** `2026-07-29`
+**Feature Update :** `2026-07-26`
 
 **검색 : `Ctrl`+`F`**
 
