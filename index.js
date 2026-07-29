@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import fs from "fs";
 
 
 const USE_LAST_AVATAR_WEBHOOK = process.env.USE_LAST_AVATAR_WEBHOOK ?? "o";
@@ -207,6 +208,7 @@ async function main() {
   SHOW_ALIAS_AS_IS = showAliasAsIs;
   const uidStore = {};
   let allSucceeded = true; // 모든 계정, 모든 게임이 성공(또는 이미완료)해야 true 유지
+  let hasAnyNewSuccess = false; // 전체 계정 통틀어 "출석 체크 성공!"이 하나라도 있으면 true
 
   // 수동 실행(workflow_dispatch)인지 여부 (GitHub Actions가 자동으로 넣어주는 값)
   const isManualRun = process.env.GITHUB_EVENT_NAME === "workflow_dispatch";
@@ -244,7 +246,10 @@ async function main() {
       if (result?.success) {
         successCount++;
         // retcode 0(방금 새로 출석 성공)일 때만 "새 성공"으로 표시, 이미완료(-5003)는 제외
-        if (message.includes("출석 체크 성공")) hasNewSuccess = true;
+        if (message.includes("출석 체크 성공")) {
+          hasNewSuccess = true;
+          hasAnyNewSuccess = true;
+        }
       } else {
         allSucceeded = false; // 하나라도 실패하면 전체 실패로 기록
         hasFailure = true;
@@ -307,6 +312,12 @@ async function main() {
     // 워크플로우 자체를 실패(exit 1) 처리
     console.error("일부 계정/게임 출석이 실패했습니다. 워크플로우를 실패로 표시합니다.");
     process.exitCode = 1;
+  }
+
+  // 워크플로우가 "오늘 새로 출석 성공했는지" 알 수 있도록 GITHUB_OUTPUT에 기록
+  // (이걸 보고 워크플로우가 이전 날짜 캐시를 정리할지 결정함)
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, `had_new_success=${hasAnyNewSuccess}\n`);
   }
 }
 
