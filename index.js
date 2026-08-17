@@ -169,10 +169,10 @@ async function checkIn(url, ltuid, ltoken, extraHeaders = {}) {
     }
   });
   const data = await res.json();
-  if (data.retcode === 0) return { success: true, message: "출석 체크 성공! 🎉" };
-  if (data.retcode === -5003) return { success: true, message: "이미 오늘 출석 완료 ✅" };
-  if (data.retcode === -100) return { success: false, message: "쿠키 만료 ❌" };
-  return { success: false, message: `오류 발생 (${data.message}) ⚠️` };
+  if (data.retcode === 0) return { success: true, message: "> **출석 체크 성공! 🎉**" };
+  if (data.retcode === -5003) return { success: true, message: "> **이미 오늘 출석 완료 ✅**" };
+  if (data.retcode === -100) return { success: false, message: "> ***__쿠키 만료 ❌__***" };
+  return { success: false, message: `> ***__오류 발생 (${data.message}) ⚠️__***` };
 }
 
 /**
@@ -264,8 +264,8 @@ async function main() {
 
       if (shouldShowField) {
         fields.push({
-          name: `[${displayName}]`,
-          value: `UID : ${uid || "조회 실패"}\n${message}`,
+          name: `**[${displayName}]**`,
+          value: `> UID : ${uid || "조회 실패"}\n${message}`,
           inline: false
         });
       }
