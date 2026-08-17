@@ -1,8 +1,6 @@
 import fetch from "node-fetch";
 import fs from "fs";
 
-// 임베드 오른쪽 위에 표시할 썸네일 이미지 URL (여기에 준비하신 이미지 링크를 넣으세요)
-const EMBED_THUMBNAIL_URL = "https://drive.google.com/uc?export=view&id=1uHWz1CcYPvKP8oVKCqafRtUL8vVtiDK1";
 
 const USE_LAST_AVATAR_WEBHOOK = process.env.USE_LAST_AVATAR_WEBHOOK ?? "o";
 
@@ -281,7 +279,6 @@ async function main() {
       title: `🗓 ${account.NAME} 호요랩 출석 현황`,
       description: `${successCount}/${account.GAMES.length} 성공`,
       color: successCount === account.GAMES.length ? 5763719 : 15548997,
-      thumbnail: { url: EMBED_THUMBNAIL_URL },
       fields,
       footer: {
         text: (() => {
