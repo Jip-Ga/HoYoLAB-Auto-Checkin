@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import crypto from "crypto";
 import fs from "fs";
 
 
@@ -35,6 +36,33 @@ function loadAccounts() {
   }
 
   throw new Error("ACCOUNTS_JSON 형식을 인식할 수 없습니다.");
+}
+
+/**
+ * =========================================================================
+ * [UID 캐시 파일] .date/uid-cache.json에 영구 저장
+ * =========================================================================
+ * LTUID를 그대로 파일에 남기면 저장소(특히 Public일 때)에 계정 식별값이
+ * 노출되므로, SHA-256 해시로 변환한 값을 키에 사용합니다.
+ */
+const DATA_DIR = ".date";
+const UID_CACHE_PATH = `${DATA_DIR}/uid-cache.json`;
+
+function loadUidCache() {
+  try {
+    return JSON.parse(fs.readFileSync(UID_CACHE_PATH, "utf-8"));
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveUidCache(cache) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.writeFileSync(UID_CACHE_PATH, JSON.stringify(cache, null, 2) + "\n");
+}
+
+function hashLtuid(ltuid) {
+  return crypto.createHash("sha256").update(String(ltuid)).digest("hex").slice(0, 16);
 }
 
 /**
@@ -134,7 +162,7 @@ function normalizeAvatarUrl(url) {
 
 /**
  * =========================================================================
- * [UID 조회] 최초 1회만 실행됨
+ * [UID 조회 + 캐시]
  * =========================================================================
  */
 async function getGameUID(ltuid, ltoken, gameBiz) {
@@ -148,6 +176,19 @@ async function getGameUID(ltuid, ltoken, gameBiz) {
   const data = await res.json();
   if (data.data?.list?.length > 0) return data.data.list[0].game_uid;
   return null;
+}
+
+/**
+ * uidCache에서 "해시된LTUID_biz" 키로 UID를 찾고, 없으면 API로 조회해서 캐시에 채워 넣습니다.
+ */
+async function getCachedUID(uidCache, ltuid, ltoken, gameBiz) {
+  const key = `${hashLtuid(ltuid)}_${gameBiz}`;
+  if (uidCache[key]) return uidCache[key];
+
+  const uid = await getGameUID(ltuid, ltoken, gameBiz);
+  if (uid) uidCache[key] = uid;
+  await sleep(300);
+  return uid;
 }
 
 /**
@@ -206,7 +247,7 @@ async function sendDiscord(webhook, embed, avatar) {
 async function main() {
   const { accounts: ACCOUNTS, showAliasAsIs } = loadAccounts();
   SHOW_ALIAS_AS_IS = showAliasAsIs;
-  const uidStore = {};
+  const uidCache = loadUidCache();
   let allSucceeded = true; // 모든 계정, 모든 게임이 성공(또는 이미완료)해야 true 유지
   let hasAnyNewSuccess = false; // 전체 계정 통틀어 "출석 체크 성공!"이 하나라도 있으면 true
 
@@ -223,14 +264,7 @@ async function main() {
       const game = findGame(gameName);
       if (!game) continue;
 
-      const uidKey = `${account.LTUID}_${gameName}`;
-      let uid = uidStore[uidKey] || null;
-
-      if (!uid) {
-        uid = await getGameUID(account.LTUID, account.LTOKEN, game.biz);
-        if (uid) uidStore[uidKey] = uid;
-        await sleep(300);
-      }
+      const uid = await getCachedUID(uidCache, account.LTUID, account.LTOKEN, game.biz);
 
       let result = null;
       for (let retry = 0; retry < 3; retry++) {
@@ -313,6 +347,9 @@ async function main() {
     console.error("일부 계정/게임 출석이 실패했습니다. 워크플로우를 실패로 표시합니다.");
     process.exitCode = 1;
   }
+
+  // UID 캐시 저장 (한 번 조회한 UID는 다음 실행부터 API 호출 없이 재사용)
+  saveUidCache(uidCache);
 
   // 워크플로우가 "오늘 새로 출석 성공했는지" 알 수 있도록 GITHUB_OUTPUT에 기록
   // (이걸 보고 워크플로우가 이전 날짜 캐시를 정리할지 결정함)
